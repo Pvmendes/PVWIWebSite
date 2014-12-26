@@ -1,18 +1,16 @@
+using System.Data.Entity.Migrations;
+using PVWI.DAO;
+
 namespace PVWI.Migrations
 {
-    using System;
-    using System.Data.Entity;
-    using System.Data.Entity.Migrations;
-    using System.Linq;
-
-    internal sealed class Configuration : DbMigrationsConfiguration<PVWI.DAO.PvwiContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<PvwiContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(PVWI.DAO.PvwiContext context)
+        protected override void Seed(PvwiContext context)
         {
             //  This method will be called after migrating to the latest version.
 

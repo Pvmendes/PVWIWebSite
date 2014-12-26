@@ -1,8 +1,7 @@
+using System.Data.Entity.Migrations;
+
 namespace PVWI.Migrations
 {
-    using System;
-    using System.Data.Entity.Migrations;
-    
     public partial class InicialTables : DbMigration
     {
         public override void Up()
