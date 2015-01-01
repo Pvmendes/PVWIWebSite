@@ -29,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>App_Data\PVWI.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -197,9 +198,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CreditCardBillItemsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="DAO\PVWIContext.cs" />
+    <Compile Include="Entities\CreditCardBill.cs" />
     <Compile Include="Entities\CreditCardBillItem.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Global.asax.cs">
@@ -208,6 +211,10 @@
     <Compile Include="Migrations\201412240235055_InicialTables.cs" />
     <Compile Include="Migrations\201412240235055_InicialTables.Designer.cs">
       <DependentUpon>201412240235055_InicialTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201501012301581_Atualizacao das entidades e criacao da tabela faturas.cs" />
+    <Compile Include="Migrations\201501012301581_Atualizacao das entidades e criacao da tabela faturas.Designer.cs">
+      <DependentUpon>201501012301581_Atualizacao das entidades e criacao da tabela faturas.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
@@ -277,10 +284,14 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201412240235055_InicialTables.resx">
       <DependentUpon>201412240235055_InicialTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201501012301581_Atualizacao das entidades e criacao da tabela faturas.resx">
+      <DependentUpon>201501012301581_Atualizacao das entidades e criacao da tabela faturas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

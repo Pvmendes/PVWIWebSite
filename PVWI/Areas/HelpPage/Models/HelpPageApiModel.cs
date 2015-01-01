@@ -1,11 +1,18 @@
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Net.Http.Headers;
-using System.Web.Http.Description;
-using PVWI.Areas.HelpPage.ModelDescriptions;
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="HelpPageApiModel.cs" company="PVWI Family">
+//   Todos os direitos reservados.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PVWI.Areas.HelpPage.Models
 {
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Net.Http.Headers;
+    using System.Web.Http.Description;
+
+    using PVWI.Areas.HelpPage.ModelDescriptions;
+
     /// <summary>
     /// The model that represents an API displayed on the help page.
     /// </summary>
@@ -84,6 +91,15 @@ namespace PVWI.Areas.HelpPage.Models
         /// </summary>
         public Collection<string> ErrorMessages { get; private set; }
 
+        /// <summary>
+        /// The get parameter descriptions.
+        /// </summary>
+        /// <param name="modelDescription">
+        /// The model description.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IList"/>.
+        /// </returns>
         private static IList<ParameterDescription> GetParameterDescriptions(ModelDescription modelDescription)
         {
             ComplexTypeModelDescription complexTypeModelDescription = modelDescription as ComplexTypeModelDescription;

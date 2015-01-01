@@ -1,20 +1,27 @@
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Formatting;
-using System.Net.Http.Headers;
-using System.Web.Http.Description;
-using System.Xml.Linq;
-using Newtonsoft.Json;
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="HelpPageSampleGenerator.cs" company="PVWI Family">
+//   Todos os direitos reservados.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PVWI.Areas.HelpPage
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.ComponentModel;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
+    using System.IO;
+    using System.Linq;
+    using System.Net.Http;
+    using System.Net.Http.Formatting;
+    using System.Net.Http.Headers;
+    using System.Web.Http.Description;
+    using System.Xml.Linq;
+
+    using Newtonsoft.Json;
+
     /// <summary>
     /// This class will generate the samples for the help page.
     /// </summary>
@@ -30,7 +37,7 @@ namespace PVWI.Areas.HelpPage
             SampleObjects = new Dictionary<Type, object>();
             SampleObjectFactories = new List<Func<HelpPageSampleGenerator, Type, object>>
             {
-                DefaultSampleObjectFactory,
+                DefaultSampleObjectFactory
             };
         }
 
@@ -57,15 +64,19 @@ namespace PVWI.Areas.HelpPage
         /// Collection includes just <see cref="ObjectGenerator.GenerateObject(Type)"/> initially. Use
         /// <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
         /// <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
-        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures",
+        [SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures", 
             Justification = "This is an appropriate nesting of generic types")]
         public IList<Func<HelpPageSampleGenerator, Type, object>> SampleObjectFactories { get; private set; }
 
         /// <summary>
         /// Gets the request body samples for a given <see cref="ApiDescription"/>.
         /// </summary>
-        /// <param name="api">The <see cref="ApiDescription"/>.</param>
-        /// <returns>The samples keyed by media type.</returns>
+        /// <param name="api">
+        /// The <see cref="ApiDescription"/>.
+        /// </param>
+        /// <returns>
+        /// The samples keyed by media type.
+        /// </returns>
         public IDictionary<MediaTypeHeaderValue, object> GetSampleRequests(ApiDescription api)
         {
             return GetSample(api, SampleDirection.Request);
@@ -74,8 +85,12 @@ namespace PVWI.Areas.HelpPage
         /// <summary>
         /// Gets the response body samples for a given <see cref="ApiDescription"/>.
         /// </summary>
-        /// <param name="api">The <see cref="ApiDescription"/>.</param>
-        /// <returns>The samples keyed by media type.</returns>
+        /// <param name="api">
+        /// The <see cref="ApiDescription"/>.
+        /// </param>
+        /// <returns>
+        /// The samples keyed by media type.
+        /// </returns>
         public IDictionary<MediaTypeHeaderValue, object> GetSampleResponses(ApiDescription api)
         {
             return GetSample(api, SampleDirection.Response);
@@ -84,15 +99,22 @@ namespace PVWI.Areas.HelpPage
         /// <summary>
         /// Gets the request or response body samples.
         /// </summary>
-        /// <param name="api">The <see cref="ApiDescription"/>.</param>
-        /// <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
-        /// <returns>The samples keyed by media type.</returns>
+        /// <param name="api">
+        /// The <see cref="ApiDescription"/>.
+        /// </param>
+        /// <param name="sampleDirection">
+        /// The value indicating whether the sample is for a request or for a response.
+        /// </param>
+        /// <returns>
+        /// The samples keyed by media type.
+        /// </returns>
         public virtual IDictionary<MediaTypeHeaderValue, object> GetSample(ApiDescription api, SampleDirection sampleDirection)
         {
             if (api == null)
             {
                 throw new ArgumentNullException("api");
             }
+
             string controllerName = api.ActionDescriptor.ControllerDescriptor.ControllerName;
             string actionName = api.ActionDescriptor.ActionName;
             IEnumerable<string> parameterNames = api.ParameterDescriptions.Select(p => p.Name);
@@ -138,14 +160,30 @@ namespace PVWI.Areas.HelpPage
         /// <summary>
         /// Search for samples that are provided directly through <see cref="ActionSamples"/>.
         /// </summary>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
-        /// <param name="parameterNames">The parameter names.</param>
-        /// <param name="type">The CLR type.</param>
-        /// <param name="formatter">The formatter.</param>
-        /// <param name="mediaType">The media type.</param>
-        /// <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
-        /// <returns>The sample that matches the parameters.</returns>
+        /// <param name="controllerName">
+        /// Name of the controller.
+        /// </param>
+        /// <param name="actionName">
+        /// Name of the action.
+        /// </param>
+        /// <param name="parameterNames">
+        /// The parameter names.
+        /// </param>
+        /// <param name="type">
+        /// The CLR type.
+        /// </param>
+        /// <param name="formatter">
+        /// The formatter.
+        /// </param>
+        /// <param name="mediaType">
+        /// The media type.
+        /// </param>
+        /// <param name="sampleDirection">
+        /// The value indicating whether the sample is for a request or for a response.
+        /// </param>
+        /// <returns>
+        /// The sample that matches the parameters.
+        /// </returns>
         public virtual object GetActionSample(string controllerName, string actionName, IEnumerable<string> parameterNames, Type type, MediaTypeFormatter formatter, MediaTypeHeaderValue mediaType, SampleDirection sampleDirection)
         {
             object sample;
@@ -171,9 +209,13 @@ namespace PVWI.Areas.HelpPage
         /// one using <see cref="DefaultSampleObjectFactory"/> (which wraps an <see cref="ObjectGenerator"/>) and other
         /// factories in <see cref="SampleObjectFactories"/>.
         /// </summary>
-        /// <param name="type">The type.</param>
-        /// <returns>The sample object.</returns>
-        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes",
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The sample object.
+        /// </returns>
+        [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", 
             Justification = "Even if all items in SampleObjectFactories throw, problem will be visible as missing sample.")]
         public virtual object GetSampleObject(Type type)
         {
@@ -210,8 +252,12 @@ namespace PVWI.Areas.HelpPage
         /// <summary>
         /// Resolves the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> passed to the <see cref="System.Net.Http.HttpRequestMessage"/> in an action.
         /// </summary>
-        /// <param name="api">The <see cref="ApiDescription"/>.</param>
-        /// <returns>The type.</returns>
+        /// <param name="api">
+        /// The <see cref="ApiDescription"/>.
+        /// </param>
+        /// <returns>
+        /// The type.
+        /// </returns>
         public virtual Type ResolveHttpRequestMessageType(ApiDescription api)
         {
             string controllerName = api.ActionDescriptor.ControllerDescriptor.ControllerName;
@@ -224,12 +270,27 @@ namespace PVWI.Areas.HelpPage
         /// <summary>
         /// Resolves the type of the action parameter or return value when <see cref="HttpRequestMessage"/> or <see cref="HttpResponseMessage"/> is used.
         /// </summary>
-        /// <param name="api">The <see cref="ApiDescription"/>.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
-        /// <param name="parameterNames">The parameter names.</param>
-        /// <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
-        /// <param name="formatters">The formatters.</param>
+        /// <param name="api">
+        /// The <see cref="ApiDescription"/>.
+        /// </param>
+        /// <param name="controllerName">
+        /// Name of the controller.
+        /// </param>
+        /// <param name="actionName">
+        /// Name of the action.
+        /// </param>
+        /// <param name="parameterNames">
+        /// The parameter names.
+        /// </param>
+        /// <param name="sampleDirection">
+        /// The value indicating whether the sample is for a request or a response.
+        /// </param>
+        /// <param name="formatters">
+        /// The formatters.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Type"/>.
+        /// </returns>
         [SuppressMessage("Microsoft.Design", "CA1021:AvoidOutParameters", Justification = "This is only used in advanced scenarios.")]
         public virtual Type ResolveType(ApiDescription api, string controllerName, string actionName, IEnumerable<string> parameterNames, SampleDirection sampleDirection, out Collection<MediaTypeFormatter> formatters)
         {
@@ -237,10 +298,12 @@ namespace PVWI.Areas.HelpPage
             {
                 throw new InvalidEnumArgumentException("sampleDirection", (int)sampleDirection, typeof(SampleDirection));
             }
+
             if (api == null)
             {
                 throw new ArgumentNullException("api");
             }
+
             Type type;
             if (ActualHttpMessageTypes.TryGetValue(new HelpPageSampleKey(sampleDirection, controllerName, actionName, parameterNames), out type) ||
                 ActualHttpMessageTypes.TryGetValue(new HelpPageSampleKey(sampleDirection, controllerName, actionName, new[] { "*" }), out type))
@@ -254,6 +317,7 @@ namespace PVWI.Areas.HelpPage
                         newFormatters.Add(formatter);
                     }
                 }
+
                 formatters = newFormatters;
             }
             else
@@ -279,11 +343,21 @@ namespace PVWI.Areas.HelpPage
         /// <summary>
         /// Writes the sample object using formatter.
         /// </summary>
-        /// <param name="formatter">The formatter.</param>
-        /// <param name="value">The value.</param>
-        /// <param name="type">The type.</param>
-        /// <param name="mediaType">Type of the media.</param>
-        /// <returns></returns>
+        /// <param name="formatter">
+        /// The formatter.
+        /// </param>
+        /// <param name="value">
+        /// The value.
+        /// </param>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="mediaType">
+        /// Type of the media.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "The exception is recorded as InvalidSample.")]
         public virtual object WriteSampleObjectUsingFormatter(MediaTypeFormatter formatter, object value, Type type, MediaTypeHeaderValue mediaType)
         {
@@ -291,12 +365,13 @@ namespace PVWI.Areas.HelpPage
             {
                 throw new ArgumentNullException("formatter");
             }
+
             if (mediaType == null)
             {
                 throw new ArgumentNullException("mediaType");
             }
 
-            object sample = String.Empty;
+            object sample = string.Empty;
             MemoryStream ms = null;
             HttpContent content = null;
             try
@@ -322,21 +397,21 @@ namespace PVWI.Areas.HelpPage
                 }
                 else
                 {
-                    sample = new InvalidSample(String.Format(
-                        CultureInfo.CurrentCulture,
-                        "Failed to generate the sample for media type '{0}'. Cannot use formatter '{1}' to write type '{2}'.",
-                        mediaType,
-                        formatter.GetType().Name,
+                    sample = new InvalidSample(string.Format(
+                        CultureInfo.CurrentCulture, 
+                        "Failed to generate the sample for media type '{0}'. Cannot use formatter '{1}' to write type '{2}'.", 
+                        mediaType, 
+                        formatter.GetType().Name, 
                         type.Name));
                 }
             }
             catch (Exception e)
             {
-                sample = new InvalidSample(String.Format(
-                    CultureInfo.CurrentCulture,
-                    "An exception has occurred while using the formatter '{0}' to generate sample for media type '{1}'. Exception message: {2}",
-                    formatter.GetType().Name,
-                    mediaType.MediaType,
+                sample = new InvalidSample(string.Format(
+                    CultureInfo.CurrentCulture, 
+                    "An exception has occurred while using the formatter '{0}' to generate sample for media type '{1}'. Exception message: {2}", 
+                    formatter.GetType().Name, 
+                    mediaType.MediaType, 
                     UnwrapException(e).Message));
             }
             finally
@@ -345,6 +420,7 @@ namespace PVWI.Areas.HelpPage
                 {
                     ms.Dispose();
                 }
+
                 if (content != null)
                 {
                     content.Dispose();
@@ -354,6 +430,15 @@ namespace PVWI.Areas.HelpPage
             return sample;
         }
 
+        /// <summary>
+        /// The unwrap exception.
+        /// </summary>
+        /// <param name="exception">
+        /// The exception.
+        /// </param>
+        /// <returns>
+        /// The <see cref="Exception"/>.
+        /// </returns>
         internal static Exception UnwrapException(Exception exception)
         {
             AggregateException aggregateException = exception as AggregateException;
@@ -361,10 +446,23 @@ namespace PVWI.Areas.HelpPage
             {
                 return aggregateException.Flatten().InnerException;
             }
+
             return exception;
         }
 
         // Default factory for sample objects
+        /// <summary>
+        /// The default sample object factory.
+        /// </summary>
+        /// <param name="sampleGenerator">
+        /// The sample generator.
+        /// </param>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
         private static object DefaultSampleObjectFactory(HelpPageSampleGenerator sampleGenerator, Type type)
         {
             // Try to create a default sample object
@@ -372,6 +470,15 @@ namespace PVWI.Areas.HelpPage
             return objectGenerator.GenerateObject(type);
         }
 
+        /// <summary>
+        /// The try format json.
+        /// </summary>
+        /// <param name="str">
+        /// The str.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Handling the failure by returning the original string.")]
         private static string TryFormatJson(string str)
         {
@@ -387,6 +494,15 @@ namespace PVWI.Areas.HelpPage
             }
         }
 
+        /// <summary>
+        /// The try format xml.
+        /// </summary>
+        /// <param name="str">
+        /// The str.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Handling the failure by returning the original string.")]
         private static string TryFormatXml(string str)
         {
@@ -402,6 +518,21 @@ namespace PVWI.Areas.HelpPage
             }
         }
 
+        /// <summary>
+        /// The is format supported.
+        /// </summary>
+        /// <param name="sampleDirection">
+        /// The sample direction.
+        /// </param>
+        /// <param name="formatter">
+        /// The formatter.
+        /// </param>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         private static bool IsFormatSupported(SampleDirection sampleDirection, MediaTypeFormatter formatter, Type type)
         {
             switch (sampleDirection)
@@ -411,17 +542,36 @@ namespace PVWI.Areas.HelpPage
                 case SampleDirection.Response:
                     return formatter.CanWriteType(type);
             }
+
             return false;
         }
 
+        /// <summary>
+        /// The get all action samples.
+        /// </summary>
+        /// <param name="controllerName">
+        /// The controller name.
+        /// </param>
+        /// <param name="actionName">
+        /// The action name.
+        /// </param>
+        /// <param name="parameterNames">
+        /// The parameter names.
+        /// </param>
+        /// <param name="sampleDirection">
+        /// The sample direction.
+        /// </param>
+        /// <returns>
+        /// The <see cref="IEnumerable"/>.
+        /// </returns>
         private IEnumerable<KeyValuePair<HelpPageSampleKey, object>> GetAllActionSamples(string controllerName, string actionName, IEnumerable<string> parameterNames, SampleDirection sampleDirection)
         {
             HashSet<string> parameterNamesSet = new HashSet<string>(parameterNames, StringComparer.OrdinalIgnoreCase);
             foreach (var sample in ActionSamples)
             {
                 HelpPageSampleKey sampleKey = sample.Key;
-                if (String.Equals(controllerName, sampleKey.ControllerName, StringComparison.OrdinalIgnoreCase) &&
-                    String.Equals(actionName, sampleKey.ActionName, StringComparison.OrdinalIgnoreCase) &&
+                if (string.Equals(controllerName, sampleKey.ControllerName, StringComparison.OrdinalIgnoreCase) &&
+                    string.Equals(actionName, sampleKey.ActionName, StringComparison.OrdinalIgnoreCase) &&
                     (sampleKey.ParameterNames.SetEquals(new[] { "*" }) || parameterNamesSet.SetEquals(sampleKey.ParameterNames)) &&
                     sampleDirection == sampleKey.SampleDirection)
                 {
@@ -430,6 +580,15 @@ namespace PVWI.Areas.HelpPage
             }
         }
 
+        /// <summary>
+        /// The wrap sample if string.
+        /// </summary>
+        /// <param name="sample">
+        /// The sample.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
         private static object WrapSampleIfString(object sample)
         {
             string stringSample = sample as string;

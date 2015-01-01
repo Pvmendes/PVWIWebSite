@@ -1,19 +1,32 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using System.Reflection;
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ObjectGenerator.cs" company="PVWI Family">
+//   Todos os direitos reservados.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PVWI.Areas.HelpPage
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
+    using System.Linq;
+    using System.Reflection;
+
     /// <summary>
     /// This class will create an object of a given type and populate it with sample data.
     /// </summary>
     public class ObjectGenerator
     {
+        /// <summary>
+        /// The default collection size.
+        /// </summary>
         internal const int DefaultCollectionSize = 2;
+
+        /// <summary>
+        /// The simple object generator.
+        /// </summary>
         private readonly SimpleTypeObjectGenerator SimpleObjectGenerator = new SimpleTypeObjectGenerator();
 
         /// <summary>
@@ -28,13 +41,29 @@ namespace PVWI.Areas.HelpPage
         /// Collections: <see cref="IList{T}"/>, <see cref="IEnumerable{T}"/>, <see cref="ICollection{T}"/>, <see cref="IList"/>, <see cref="IEnumerable"/>, <see cref="ICollection"/> or anything deriving from <see cref="ICollection{T}"/> or <see cref="IList"/>.
         /// Queryables: <see cref="IQueryable"/>, <see cref="IQueryable{T}"/>.
         /// </summary>
-        /// <param name="type">The type.</param>
-        /// <returns>An object of the given type.</returns>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// An object of the given type.
+        /// </returns>
         public object GenerateObject(Type type)
         {
             return GenerateObject(type, new Dictionary<Type, object>());
         }
 
+        /// <summary>
+        /// The generate object.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="createdObjectReferences">
+        /// The created object references.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Here we just want to return null if anything goes wrong.")]
         private object GenerateObject(Type type, Dictionary<Type, object> createdObjectReferences)
         {
@@ -101,6 +130,21 @@ namespace PVWI.Areas.HelpPage
             return null;
         }
 
+        /// <summary>
+        /// The generate generic type.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="collectionSize">
+        /// The collection size.
+        /// </param>
+        /// <param name="createdObjectReferences">
+        /// The created object references.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
         private static object GenerateGenericType(Type type, int collectionSize, Dictionary<Type, object> createdObjectReferences)
         {
             Type genericTypeDefinition = type.GetGenericTypeDefinition();
@@ -165,6 +209,18 @@ namespace PVWI.Areas.HelpPage
             return null;
         }
 
+        /// <summary>
+        /// The generate tuple.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="createdObjectReferences">
+        /// The created object references.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
         private static object GenerateTuple(Type type, Dictionary<Type, object> createdObjectReferences)
         {
             Type[] genericArgs = type.GetGenericArguments();
@@ -176,14 +232,25 @@ namespace PVWI.Areas.HelpPage
                 parameterValues[i] = objectGenerator.GenerateObject(genericArgs[i], createdObjectReferences);
                 failedToCreateTuple &= parameterValues[i] == null;
             }
+
             if (failedToCreateTuple)
             {
                 return null;
             }
+
             object result = Activator.CreateInstance(type, parameterValues);
             return result;
         }
 
+        /// <summary>
+        /// The is tuple.
+        /// </summary>
+        /// <param name="genericTypeDefinition">
+        /// The generic type definition.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         private static bool IsTuple(Type genericTypeDefinition)
         {
             return genericTypeDefinition == typeof(Tuple<>) ||
@@ -196,6 +263,18 @@ namespace PVWI.Areas.HelpPage
                 genericTypeDefinition == typeof(Tuple<,,,,,,,>);
         }
 
+        /// <summary>
+        /// The generate key value pair.
+        /// </summary>
+        /// <param name="keyValuePairType">
+        /// The key value pair type.
+        /// </param>
+        /// <param name="createdObjectReferences">
+        /// The created object references.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
         private static object GenerateKeyValuePair(Type keyValuePairType, Dictionary<Type, object> createdObjectReferences)
         {
             Type[] genericArgs = keyValuePairType.GetGenericArguments();
@@ -209,10 +288,26 @@ namespace PVWI.Areas.HelpPage
                 // Failed to create key and values
                 return null;
             }
+
             object result = Activator.CreateInstance(keyValuePairType, keyObject, valueObject);
             return result;
         }
 
+        /// <summary>
+        /// The generate array.
+        /// </summary>
+        /// <param name="arrayType">
+        /// The array type.
+        /// </param>
+        /// <param name="size">
+        /// The size.
+        /// </param>
+        /// <param name="createdObjectReferences">
+        /// The created object references.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
         private static object GenerateArray(Type arrayType, int size, Dictionary<Type, object> createdObjectReferences)
         {
             Type type = arrayType.GetElementType();
@@ -234,6 +329,21 @@ namespace PVWI.Areas.HelpPage
             return result;
         }
 
+        /// <summary>
+        /// The generate dictionary.
+        /// </summary>
+        /// <param name="dictionaryType">
+        /// The dictionary type.
+        /// </param>
+        /// <param name="size">
+        /// The size.
+        /// </param>
+        /// <param name="createdObjectReferences">
+        /// The created object references.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
         private static object GenerateDictionary(Type dictionaryType, int size, Dictionary<Type, object> createdObjectReferences)
         {
             Type typeK = typeof(object);
@@ -258,17 +368,26 @@ namespace PVWI.Areas.HelpPage
                     return null;
                 }
 
-                bool containsKey = (bool)containsMethod.Invoke(result, new object[] { newKey });
+                bool containsKey = (bool)containsMethod.Invoke(result, new[] { newKey });
                 if (!containsKey)
                 {
                     object newValue = objectGenerator.GenerateObject(typeV, createdObjectReferences);
-                    addMethod.Invoke(result, new object[] { newKey, newValue });
+                    addMethod.Invoke(result, new[] { newKey, newValue });
                 }
             }
 
             return result;
         }
 
+        /// <summary>
+        /// The generate enum.
+        /// </summary>
+        /// <param name="enumType">
+        /// The enum type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
         private static object GenerateEnum(Type enumType)
         {
             Array possibleValues = Enum.GetValues(enumType);
@@ -276,9 +395,25 @@ namespace PVWI.Areas.HelpPage
             {
                 return possibleValues.GetValue(0);
             }
+
             return null;
         }
 
+        /// <summary>
+        /// The generate queryable.
+        /// </summary>
+        /// <param name="queryableType">
+        /// The queryable type.
+        /// </param>
+        /// <param name="size">
+        /// The size.
+        /// </param>
+        /// <param name="createdObjectReferences">
+        /// The created object references.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
         private static object GenerateQueryable(Type queryableType, int size, Dictionary<Type, object> createdObjectReferences)
         {
             bool isGeneric = queryableType.IsGenericType;
@@ -292,10 +427,12 @@ namespace PVWI.Areas.HelpPage
             {
                 list = GenerateArray(typeof(object[]), size, createdObjectReferences);
             }
+
             if (list == null)
             {
                 return null;
             }
+
             if (isGeneric)
             {
                 Type argumentType = typeof(IEnumerable<>).MakeGenericType(queryableType.GetGenericArguments());
@@ -303,9 +440,24 @@ namespace PVWI.Areas.HelpPage
                 return asQueryableMethod.Invoke(null, new[] { list });
             }
 
-            return Queryable.AsQueryable((IEnumerable)list);
+            return ((IEnumerable)list).AsQueryable();
         }
 
+        /// <summary>
+        /// The generate collection.
+        /// </summary>
+        /// <param name="collectionType">
+        /// The collection type.
+        /// </param>
+        /// <param name="size">
+        /// The size.
+        /// </param>
+        /// <param name="createdObjectReferences">
+        /// The created object references.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
         private static object GenerateCollection(Type collectionType, int size, Dictionary<Type, object> createdObjectReferences)
         {
             Type type = collectionType.IsGenericType ?
@@ -318,7 +470,7 @@ namespace PVWI.Areas.HelpPage
             for (int i = 0; i < size; i++)
             {
                 object element = objectGenerator.GenerateObject(type, createdObjectReferences);
-                addMethod.Invoke(result, new object[] { element });
+                addMethod.Invoke(result, new[] { element });
                 areAllElementsNull &= element == null;
             }
 
@@ -330,6 +482,18 @@ namespace PVWI.Areas.HelpPage
             return result;
         }
 
+        /// <summary>
+        /// The generate nullable.
+        /// </summary>
+        /// <param name="nullableType">
+        /// The nullable type.
+        /// </param>
+        /// <param name="createdObjectReferences">
+        /// The created object references.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
         private static object GenerateNullable(Type nullableType, Dictionary<Type, object> createdObjectReferences)
         {
             Type type = nullableType.GetGenericArguments()[0];
@@ -337,6 +501,18 @@ namespace PVWI.Areas.HelpPage
             return objectGenerator.GenerateObject(type, createdObjectReferences);
         }
 
+        /// <summary>
+        /// The generate complex object.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="createdObjectReferences">
+        /// The created object references.
+        /// </param>
+        /// <returns>
+        /// The <see cref="object"/>.
+        /// </returns>
         private static object GenerateComplexObject(Type type, Dictionary<Type, object> createdObjectReferences)
         {
             object result = null;
@@ -362,12 +538,25 @@ namespace PVWI.Areas.HelpPage
 
                 result = defaultCtor.Invoke(new object[0]);
             }
+
             createdObjectReferences.Add(type, result);
             SetPublicProperties(type, result, createdObjectReferences);
             SetPublicFields(type, result, createdObjectReferences);
             return result;
         }
 
+        /// <summary>
+        /// The set public properties.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="obj">
+        /// The obj.
+        /// </param>
+        /// <param name="createdObjectReferences">
+        /// The created object references.
+        /// </param>
         private static void SetPublicProperties(Type type, object obj, Dictionary<Type, object> createdObjectReferences)
         {
             PropertyInfo[] properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
@@ -382,6 +571,18 @@ namespace PVWI.Areas.HelpPage
             }
         }
 
+        /// <summary>
+        /// The set public fields.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="obj">
+        /// The obj.
+        /// </param>
+        /// <param name="createdObjectReferences">
+        /// The created object references.
+        /// </param>
         private static void SetPublicFields(Type type, object obj, Dictionary<Type, object> createdObjectReferences)
         {
             FieldInfo[] fields = type.GetFields(BindingFlags.Public | BindingFlags.Instance);
@@ -393,60 +594,94 @@ namespace PVWI.Areas.HelpPage
             }
         }
 
+        /// <summary>
+        /// The simple type object generator.
+        /// </summary>
         private class SimpleTypeObjectGenerator
         {
-            private long _index = 0;
+            /// <summary>
+            /// The _index.
+            /// </summary>
+            private long _index;
+
+            /// <summary>
+            /// The default generators.
+            /// </summary>
             private static readonly Dictionary<Type, Func<long, object>> DefaultGenerators = InitializeGenerators();
 
+            /// <summary>
+            /// The initialize generators.
+            /// </summary>
+            /// <returns>
+            /// The <see cref="Dictionary"/>.
+            /// </returns>
             [SuppressMessage("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity", Justification = "These are simple type factories and cannot be split up.")]
             private static Dictionary<Type, Func<long, object>> InitializeGenerators()
             {
                 return new Dictionary<Type, Func<long, object>>
                 {
-                    { typeof(Boolean), index => true },
-                    { typeof(Byte), index => (Byte)64 },
-                    { typeof(Char), index => (Char)65 },
-                    { typeof(DateTime), index => DateTime.Now },
-                    { typeof(DateTimeOffset), index => new DateTimeOffset(DateTime.Now) },
-                    { typeof(DBNull), index => DBNull.Value },
-                    { typeof(Decimal), index => (Decimal)index },
-                    { typeof(Double), index => (Double)(index + 0.1) },
-                    { typeof(Guid), index => Guid.NewGuid() },
-                    { typeof(Int16), index => (Int16)(index % Int16.MaxValue) },
-                    { typeof(Int32), index => (Int32)(index % Int32.MaxValue) },
-                    { typeof(Int64), index => (Int64)index },
-                    { typeof(Object), index => new object() },
-                    { typeof(SByte), index => (SByte)64 },
-                    { typeof(Single), index => (Single)(index + 0.1) },
+                    { typeof(Boolean), index => true }, 
+                    { typeof(Byte), index => (Byte)64 }, 
+                    { typeof(Char), index => (Char)65 }, 
+                    { typeof(DateTime), index => DateTime.Now }, 
+                    { typeof(DateTimeOffset), index => new DateTimeOffset(DateTime.Now) }, 
+                    { typeof(DBNull), index => DBNull.Value }, 
+                    { typeof(Decimal), index => (Decimal)index }, 
+                    { typeof(Double), index => index + 0.1 }, 
+                    { typeof(Guid), index => Guid.NewGuid() }, 
+                    { typeof(Int16), index => (Int16)(index % short.MaxValue) }, 
+                    { typeof(Int32), index => (Int32)(index % int.MaxValue) }, 
+                    { typeof(Int64), index => index }, 
+                    { typeof(Object), index => new object() }, 
+                    { typeof(SByte), index => (SByte)64 }, 
+                    { typeof(Single), index => (Single)(index + 0.1) }, 
                     { 
                         typeof(String), index =>
                         {
-                            return String.Format(CultureInfo.CurrentCulture, "sample string {0}", index);
+                            return string.Format(CultureInfo.CurrentCulture, "sample string {0}", index);
                         }
-                    },
+                    }, 
                     { 
                         typeof(TimeSpan), index =>
                         {
                             return TimeSpan.FromTicks(1234567);
                         }
-                    },
-                    { typeof(UInt16), index => (UInt16)(index % UInt16.MaxValue) },
-                    { typeof(UInt32), index => (UInt32)(index % UInt32.MaxValue) },
-                    { typeof(UInt64), index => (UInt64)index },
+                    }, 
+                    { typeof(UInt16), index => (UInt16)(index % ushort.MaxValue) }, 
+                    { typeof(UInt32), index => (UInt32)(index % uint.MaxValue) }, 
+                    { typeof(UInt64), index => (UInt64)index }, 
                     { 
                         typeof(Uri), index =>
                         {
-                            return new Uri(String.Format(CultureInfo.CurrentCulture, "http://webapihelppage{0}.com", index));
+                            return new Uri(string.Format(CultureInfo.CurrentCulture, "http://webapihelppage{0}.com", index));
                         }
-                    },
+                    }
                 };
             }
 
+            /// <summary>
+            /// The can generate object.
+            /// </summary>
+            /// <param name="type">
+            /// The type.
+            /// </param>
+            /// <returns>
+            /// The <see cref="bool"/>.
+            /// </returns>
             public static bool CanGenerateObject(Type type)
             {
                 return DefaultGenerators.ContainsKey(type);
             }
 
+            /// <summary>
+            /// The generate object.
+            /// </summary>
+            /// <param name="type">
+            /// The type.
+            /// </param>
+            /// <returns>
+            /// The <see cref="object"/>.
+            /// </returns>
             public object GenerateObject(Type type)
             {
                 return DefaultGenerators[type](++_index);

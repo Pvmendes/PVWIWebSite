@@ -1,30 +1,47 @@
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Web.Http;
-using System.Web.Http.Controllers;
-using System.Web.Http.Description;
-using PVWI.Areas.HelpPage.ModelDescriptions;
-using PVWI.Areas.HelpPage.Models;
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="HelpPageConfigurationExtensions.cs" company="PVWI Family">
+//   Todos os direitos reservados.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PVWI.Areas.HelpPage
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.ComponentModel;
+    using System.Diagnostics;
+    using System.Diagnostics.CodeAnalysis;
+    using System.Globalization;
+    using System.Linq;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Web.Http;
+    using System.Web.Http.Controllers;
+    using System.Web.Http.Description;
+
+    using PVWI.Areas.HelpPage.ModelDescriptions;
+    using PVWI.Areas.HelpPage.Models;
+
+    /// <summary>
+    /// The help page configuration extensions.
+    /// </summary>
     public static class HelpPageConfigurationExtensions
     {
+        /// <summary>
+        /// The api model prefix.
+        /// </summary>
         private const string ApiModelPrefix = "MS_HelpPageApiModel_";
 
         /// <summary>
         /// Sets the documentation provider for help page.
         /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="documentationProvider">The documentation provider.</param>
+        /// <param name="config">
+        /// The <see cref="HttpConfiguration"/>.
+        /// </param>
+        /// <param name="documentationProvider">
+        /// The documentation provider.
+        /// </param>
         public static void SetDocumentationProvider(this HttpConfiguration config, IDocumentationProvider documentationProvider)
         {
             config.Services.Replace(typeof(IDocumentationProvider), documentationProvider);
@@ -33,8 +50,12 @@ namespace PVWI.Areas.HelpPage
         /// <summary>
         /// Sets the objects that will be used by the formatters to produce sample requests/responses.
         /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="sampleObjects">The sample objects.</param>
+        /// <param name="config">
+        /// The <see cref="HttpConfiguration"/>.
+        /// </param>
+        /// <param name="sampleObjects">
+        /// The sample objects.
+        /// </param>
         public static void SetSampleObjects(this HttpConfiguration config, IDictionary<Type, object> sampleObjects)
         {
             config.GetHelpPageSampleGenerator().SampleObjects = sampleObjects;
@@ -43,11 +64,21 @@ namespace PVWI.Areas.HelpPage
         /// <summary>
         /// Sets the sample request directly for the specified media type and action.
         /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="sample">The sample request.</param>
-        /// <param name="mediaType">The media type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
+        /// <param name="config">
+        /// The <see cref="HttpConfiguration"/>.
+        /// </param>
+        /// <param name="sample">
+        /// The sample request.
+        /// </param>
+        /// <param name="mediaType">
+        /// The media type.
+        /// </param>
+        /// <param name="controllerName">
+        /// Name of the controller.
+        /// </param>
+        /// <param name="actionName">
+        /// Name of the action.
+        /// </param>
         public static void SetSampleRequest(this HttpConfiguration config, object sample, MediaTypeHeaderValue mediaType, string controllerName, string actionName)
         {
             config.GetHelpPageSampleGenerator().ActionSamples.Add(new HelpPageSampleKey(mediaType, SampleDirection.Request, controllerName, actionName, new[] { "*" }), sample);
@@ -56,12 +87,24 @@ namespace PVWI.Areas.HelpPage
         /// <summary>
         /// Sets the sample request directly for the specified media type and action with parameters.
         /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="sample">The sample request.</param>
-        /// <param name="mediaType">The media type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
-        /// <param name="parameterNames">The parameter names.</param>
+        /// <param name="config">
+        /// The <see cref="HttpConfiguration"/>.
+        /// </param>
+        /// <param name="sample">
+        /// The sample request.
+        /// </param>
+        /// <param name="mediaType">
+        /// The media type.
+        /// </param>
+        /// <param name="controllerName">
+        /// Name of the controller.
+        /// </param>
+        /// <param name="actionName">
+        /// Name of the action.
+        /// </param>
+        /// <param name="parameterNames">
+        /// The parameter names.
+        /// </param>
         public static void SetSampleRequest(this HttpConfiguration config, object sample, MediaTypeHeaderValue mediaType, string controllerName, string actionName, params string[] parameterNames)
         {
             config.GetHelpPageSampleGenerator().ActionSamples.Add(new HelpPageSampleKey(mediaType, SampleDirection.Request, controllerName, actionName, parameterNames), sample);
@@ -70,11 +113,21 @@ namespace PVWI.Areas.HelpPage
         /// <summary>
         /// Sets the sample request directly for the specified media type of the action.
         /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="sample">The sample response.</param>
-        /// <param name="mediaType">The media type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
+        /// <param name="config">
+        /// The <see cref="HttpConfiguration"/>.
+        /// </param>
+        /// <param name="sample">
+        /// The sample response.
+        /// </param>
+        /// <param name="mediaType">
+        /// The media type.
+        /// </param>
+        /// <param name="controllerName">
+        /// Name of the controller.
+        /// </param>
+        /// <param name="actionName">
+        /// Name of the action.
+        /// </param>
         public static void SetSampleResponse(this HttpConfiguration config, object sample, MediaTypeHeaderValue mediaType, string controllerName, string actionName)
         {
             config.GetHelpPageSampleGenerator().ActionSamples.Add(new HelpPageSampleKey(mediaType, SampleDirection.Response, controllerName, actionName, new[] { "*" }), sample);
@@ -83,12 +136,24 @@ namespace PVWI.Areas.HelpPage
         /// <summary>
         /// Sets the sample response directly for the specified media type of the action with specific parameters.
         /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="sample">The sample response.</param>
-        /// <param name="mediaType">The media type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
-        /// <param name="parameterNames">The parameter names.</param>
+        /// <param name="config">
+        /// The <see cref="HttpConfiguration"/>.
+        /// </param>
+        /// <param name="sample">
+        /// The sample response.
+        /// </param>
+        /// <param name="mediaType">
+        /// The media type.
+        /// </param>
+        /// <param name="controllerName">
+        /// Name of the controller.
+        /// </param>
+        /// <param name="actionName">
+        /// Name of the action.
+        /// </param>
+        /// <param name="parameterNames">
+        /// The parameter names.
+        /// </param>
         public static void SetSampleResponse(this HttpConfiguration config, object sample, MediaTypeHeaderValue mediaType, string controllerName, string actionName, params string[] parameterNames)
         {
             config.GetHelpPageSampleGenerator().ActionSamples.Add(new HelpPageSampleKey(mediaType, SampleDirection.Response, controllerName, actionName, parameterNames), sample);
@@ -97,9 +162,15 @@ namespace PVWI.Areas.HelpPage
         /// <summary>
         /// Sets the sample directly for all actions with the specified media type.
         /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="sample">The sample.</param>
-        /// <param name="mediaType">The media type.</param>
+        /// <param name="config">
+        /// The <see cref="HttpConfiguration"/>.
+        /// </param>
+        /// <param name="sample">
+        /// The sample.
+        /// </param>
+        /// <param name="mediaType">
+        /// The media type.
+        /// </param>
         public static void SetSampleForMediaType(this HttpConfiguration config, object sample, MediaTypeHeaderValue mediaType)
         {
             config.GetHelpPageSampleGenerator().ActionSamples.Add(new HelpPageSampleKey(mediaType), sample);
@@ -108,10 +179,18 @@ namespace PVWI.Areas.HelpPage
         /// <summary>
         /// Sets the sample directly for all actions with the specified type and media type.
         /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="sample">The sample.</param>
-        /// <param name="mediaType">The media type.</param>
-        /// <param name="type">The parameter type or return type of an action.</param>
+        /// <param name="config">
+        /// The <see cref="HttpConfiguration"/>.
+        /// </param>
+        /// <param name="sample">
+        /// The sample.
+        /// </param>
+        /// <param name="mediaType">
+        /// The media type.
+        /// </param>
+        /// <param name="type">
+        /// The parameter type or return type of an action.
+        /// </param>
         public static void SetSampleForType(this HttpConfiguration config, object sample, MediaTypeHeaderValue mediaType, Type type)
         {
             config.GetHelpPageSampleGenerator().ActionSamples.Add(new HelpPageSampleKey(mediaType, type), sample);
@@ -121,10 +200,18 @@ namespace PVWI.Areas.HelpPage
         /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> passed to the <see cref="System.Net.Http.HttpRequestMessage"/> in an action.
         /// The help page will use this information to produce more accurate request samples.
         /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="type">The type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
+        /// <param name="config">
+        /// The <see cref="HttpConfiguration"/>.
+        /// </param>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="controllerName">
+        /// Name of the controller.
+        /// </param>
+        /// <param name="actionName">
+        /// Name of the action.
+        /// </param>
         public static void SetActualRequestType(this HttpConfiguration config, Type type, string controllerName, string actionName)
         {
             config.GetHelpPageSampleGenerator().ActualHttpMessageTypes.Add(new HelpPageSampleKey(SampleDirection.Request, controllerName, actionName, new[] { "*" }), type);
@@ -134,11 +221,21 @@ namespace PVWI.Areas.HelpPage
         /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> passed to the <see cref="System.Net.Http.HttpRequestMessage"/> in an action.
         /// The help page will use this information to produce more accurate request samples.
         /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="type">The type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
-        /// <param name="parameterNames">The parameter names.</param>
+        /// <param name="config">
+        /// The <see cref="HttpConfiguration"/>.
+        /// </param>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="controllerName">
+        /// Name of the controller.
+        /// </param>
+        /// <param name="actionName">
+        /// Name of the action.
+        /// </param>
+        /// <param name="parameterNames">
+        /// The parameter names.
+        /// </param>
         public static void SetActualRequestType(this HttpConfiguration config, Type type, string controllerName, string actionName, params string[] parameterNames)
         {
             config.GetHelpPageSampleGenerator().ActualHttpMessageTypes.Add(new HelpPageSampleKey(SampleDirection.Request, controllerName, actionName, parameterNames), type);
@@ -148,10 +245,18 @@ namespace PVWI.Areas.HelpPage
         /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> returned as part of the <see cref="System.Net.Http.HttpRequestMessage"/> in an action.
         /// The help page will use this information to produce more accurate response samples.
         /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="type">The type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
+        /// <param name="config">
+        /// The <see cref="HttpConfiguration"/>.
+        /// </param>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="controllerName">
+        /// Name of the controller.
+        /// </param>
+        /// <param name="actionName">
+        /// Name of the action.
+        /// </param>
         public static void SetActualResponseType(this HttpConfiguration config, Type type, string controllerName, string actionName)
         {
             config.GetHelpPageSampleGenerator().ActualHttpMessageTypes.Add(new HelpPageSampleKey(SampleDirection.Response, controllerName, actionName, new[] { "*" }), type);
@@ -161,11 +266,21 @@ namespace PVWI.Areas.HelpPage
         /// Specifies the actual type of <see cref="System.Net.Http.ObjectContent{T}"/> returned as part of the <see cref="System.Net.Http.HttpRequestMessage"/> in an action.
         /// The help page will use this information to produce more accurate response samples.
         /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="type">The type.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
-        /// <param name="parameterNames">The parameter names.</param>
+        /// <param name="config">
+        /// The <see cref="HttpConfiguration"/>.
+        /// </param>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <param name="controllerName">
+        /// Name of the controller.
+        /// </param>
+        /// <param name="actionName">
+        /// Name of the action.
+        /// </param>
+        /// <param name="parameterNames">
+        /// The parameter names.
+        /// </param>
         public static void SetActualResponseType(this HttpConfiguration config, Type type, string controllerName, string actionName, params string[] parameterNames)
         {
             config.GetHelpPageSampleGenerator().ActualHttpMessageTypes.Add(new HelpPageSampleKey(SampleDirection.Response, controllerName, actionName, parameterNames), type);
@@ -174,45 +289,61 @@ namespace PVWI.Areas.HelpPage
         /// <summary>
         /// Gets the help page sample generator.
         /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <returns>The help page sample generator.</returns>
+        /// <param name="config">
+        /// The <see cref="HttpConfiguration"/>.
+        /// </param>
+        /// <returns>
+        /// The help page sample generator.
+        /// </returns>
         public static HelpPageSampleGenerator GetHelpPageSampleGenerator(this HttpConfiguration config)
         {
             return (HelpPageSampleGenerator)config.Properties.GetOrAdd(
-                typeof(HelpPageSampleGenerator),
+                typeof(HelpPageSampleGenerator), 
                 k => new HelpPageSampleGenerator());
         }
 
         /// <summary>
         /// Sets the help page sample generator.
         /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="sampleGenerator">The help page sample generator.</param>
+        /// <param name="config">
+        /// The <see cref="HttpConfiguration"/>.
+        /// </param>
+        /// <param name="sampleGenerator">
+        /// The help page sample generator.
+        /// </param>
         public static void SetHelpPageSampleGenerator(this HttpConfiguration config, HelpPageSampleGenerator sampleGenerator)
         {
             config.Properties.AddOrUpdate(
-                typeof(HelpPageSampleGenerator),
-                k => sampleGenerator,
+                typeof(HelpPageSampleGenerator), 
+                k => sampleGenerator, 
                 (k, o) => sampleGenerator);
         }
 
         /// <summary>
         /// Gets the model description generator.
         /// </summary>
-        /// <param name="config">The configuration.</param>
-        /// <returns>The <see cref="ModelDescriptionGenerator"/></returns>
+        /// <param name="config">
+        /// The configuration.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ModelDescriptionGenerator"/>
+        /// </returns>
         public static ModelDescriptionGenerator GetModelDescriptionGenerator(this HttpConfiguration config)
         {
             return (ModelDescriptionGenerator)config.Properties.GetOrAdd(
-                typeof(ModelDescriptionGenerator),
+                typeof(ModelDescriptionGenerator), 
                 k => InitializeModelDescriptionGenerator(config));
         }
 
         /// <summary>
         /// Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
         /// </summary>
-        /// <param name="config">The <see cref="HttpConfiguration"/>.</param>
-        /// <param name="apiDescriptionId">The <see cref="ApiDescription"/> ID.</param>
+        /// <param name="config">
+        /// The <see cref="HttpConfiguration"/>.
+        /// </param>
+        /// <param name="apiDescriptionId">
+        /// The <see cref="ApiDescription"/> ID.
+        /// </param>
         /// <returns>
         /// An <see cref="HelpPageApiModel"/>
         /// </returns>
@@ -223,7 +354,7 @@ namespace PVWI.Areas.HelpPage
             if (!config.Properties.TryGetValue(modelId, out model))
             {
                 Collection<ApiDescription> apiDescriptions = config.Services.GetApiExplorer().ApiDescriptions;
-                ApiDescription apiDescription = apiDescriptions.FirstOrDefault(api => String.Equals(api.GetFriendlyId(), apiDescriptionId, StringComparison.OrdinalIgnoreCase));
+                ApiDescription apiDescription = apiDescriptions.FirstOrDefault(api => string.Equals(api.GetFriendlyId(), apiDescriptionId, StringComparison.OrdinalIgnoreCase));
                 if (apiDescription != null)
                 {
                     model = GenerateApiModel(apiDescription, config);
@@ -234,11 +365,22 @@ namespace PVWI.Areas.HelpPage
             return (HelpPageApiModel)model;
         }
 
+        /// <summary>
+        /// The generate api model.
+        /// </summary>
+        /// <param name="apiDescription">
+        /// The api description.
+        /// </param>
+        /// <param name="config">
+        /// The config.
+        /// </param>
+        /// <returns>
+        /// The <see cref="HelpPageApiModel"/>.
+        /// </returns>
         private static HelpPageApiModel GenerateApiModel(ApiDescription apiDescription, HttpConfiguration config)
         {
-            HelpPageApiModel apiModel = new HelpPageApiModel()
-            {
-                ApiDescription = apiDescription,
+            HelpPageApiModel apiModel = new HelpPageApiModel {
+                ApiDescription = apiDescription
             };
 
             ModelDescriptionGenerator modelGenerator = config.GetModelDescriptionGenerator();
@@ -251,6 +393,15 @@ namespace PVWI.Areas.HelpPage
             return apiModel;
         }
 
+        /// <summary>
+        /// The generate uri parameters.
+        /// </summary>
+        /// <param name="apiModel">
+        /// The api model.
+        /// </param>
+        /// <param name="modelGenerator">
+        /// The model generator.
+        /// </param>
         private static void GenerateUriParameters(HelpPageApiModel apiModel, ModelDescriptionGenerator modelGenerator)
         {
             ApiDescription apiDescription = apiModel.ApiDescription;
@@ -273,20 +424,19 @@ namespace PVWI.Areas.HelpPage
                     // [TypeConverter(typeof(PointConverter))]
                     // public class Point
                     // {
-                    //     public Point(int x, int y)
-                    //     {
-                    //         X = x;
-                    //         Y = y;
-                    //     }
-                    //     public int X { get; set; }
-                    //     public int Y { get; set; }
+                    // public Point(int x, int y)
+                    // {
+                    // X = x;
+                    // Y = y;
+                    // }
+                    // public int X { get; set; }
+                    // public int Y { get; set; }
                     // }
                     // Class Point is bindable with a TypeConverter, so Point will be added to UriParameters collection.
-                    // 
                     // public class Point
                     // {
-                    //     public int X { get; set; }
-                    //     public int Y { get; set; }
+                    // public int X { get; set; }
+                    // public int Y { get; set; }
                     // }
                     // Regular complex class Point will have properties X and Y added to UriParameters collection.
                     if (complexTypeDescription != null
@@ -304,13 +454,13 @@ namespace PVWI.Areas.HelpPage
 
                         if (!parameterDescriptor.IsOptional)
                         {
-                            uriParameter.Annotations.Add(new ParameterAnnotation() { Documentation = "Required" });
+                            uriParameter.Annotations.Add(new ParameterAnnotation { Documentation = "Required" });
                         }
 
                         object defaultValue = parameterDescriptor.DefaultValue;
                         if (defaultValue != null)
                         {
-                            uriParameter.Annotations.Add(new ParameterAnnotation() { Documentation = "Default value is " + Convert.ToString(defaultValue, CultureInfo.InvariantCulture) });
+                            uriParameter.Annotations.Add(new ParameterAnnotation { Documentation = "Default value is " + Convert.ToString(defaultValue, CultureInfo.InvariantCulture) });
                         }
                     }
                     else
@@ -327,6 +477,15 @@ namespace PVWI.Areas.HelpPage
             }
         }
 
+        /// <summary>
+        /// The is bindable with type converter.
+        /// </summary>
+        /// <param name="parameterType">
+        /// The parameter type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         private static bool IsBindableWithTypeConverter(Type parameterType)
         {
             if (parameterType == null)
@@ -337,20 +496,47 @@ namespace PVWI.Areas.HelpPage
             return TypeDescriptor.GetConverter(parameterType).CanConvertFrom(typeof(string));
         }
 
-        private static ParameterDescription AddParameterDescription(HelpPageApiModel apiModel,
+        /// <summary>
+        /// The add parameter description.
+        /// </summary>
+        /// <param name="apiModel">
+        /// The api model.
+        /// </param>
+        /// <param name="apiParameter">
+        /// The api parameter.
+        /// </param>
+        /// <param name="typeDescription">
+        /// The type description.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ParameterDescription"/>.
+        /// </returns>
+        private static ParameterDescription AddParameterDescription(HelpPageApiModel apiModel, 
             ApiParameterDescription apiParameter, ModelDescription typeDescription)
         {
             ParameterDescription parameterDescription = new ParameterDescription
             {
-                Name = apiParameter.Name,
-                Documentation = apiParameter.Documentation,
-                TypeDescription = typeDescription,
+                Name = apiParameter.Name, 
+                Documentation = apiParameter.Documentation, 
+                TypeDescription = typeDescription
             };
 
             apiModel.UriParameters.Add(parameterDescription);
             return parameterDescription;
         }
 
+        /// <summary>
+        /// The generate request model description.
+        /// </summary>
+        /// <param name="apiModel">
+        /// The api model.
+        /// </param>
+        /// <param name="modelGenerator">
+        /// The model generator.
+        /// </param>
+        /// <param name="sampleGenerator">
+        /// The sample generator.
+        /// </param>
         private static void GenerateRequestModelDescription(HelpPageApiModel apiModel, ModelDescriptionGenerator modelGenerator, HelpPageSampleGenerator sampleGenerator)
         {
             ApiDescription apiDescription = apiModel.ApiDescription;
@@ -375,6 +561,15 @@ namespace PVWI.Areas.HelpPage
             }
         }
 
+        /// <summary>
+        /// The generate resource description.
+        /// </summary>
+        /// <param name="apiModel">
+        /// The api model.
+        /// </param>
+        /// <param name="modelGenerator">
+        /// The model generator.
+        /// </param>
         private static void GenerateResourceDescription(HelpPageApiModel apiModel, ModelDescriptionGenerator modelGenerator)
         {
             ResponseDescription response = apiModel.ApiDescription.ResponseDescription;
@@ -385,6 +580,15 @@ namespace PVWI.Areas.HelpPage
             }
         }
 
+        /// <summary>
+        /// The generate samples.
+        /// </summary>
+        /// <param name="apiModel">
+        /// The api model.
+        /// </param>
+        /// <param name="sampleGenerator">
+        /// The sample generator.
+        /// </param>
         [SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "The exception is recorded as ErrorMessages.")]
         private static void GenerateSamples(HelpPageApiModel apiModel, HelpPageSampleGenerator sampleGenerator)
         {
@@ -404,12 +608,30 @@ namespace PVWI.Areas.HelpPage
             }
             catch (Exception e)
             {
-                apiModel.ErrorMessages.Add(String.Format(CultureInfo.CurrentCulture,
-                    "An exception has occurred while generating the sample. Exception message: {0}",
+                apiModel.ErrorMessages.Add(string.Format(CultureInfo.CurrentCulture, 
+                    "An exception has occurred while generating the sample. Exception message: {0}", 
                     HelpPageSampleGenerator.UnwrapException(e).Message));
             }
         }
 
+        /// <summary>
+        /// The try get resource parameter.
+        /// </summary>
+        /// <param name="apiDescription">
+        /// The api description.
+        /// </param>
+        /// <param name="config">
+        /// The config.
+        /// </param>
+        /// <param name="parameterDescription">
+        /// The parameter description.
+        /// </param>
+        /// <param name="resourceType">
+        /// The resource type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         private static bool TryGetResourceParameter(ApiDescription apiDescription, HttpConfiguration config, out ApiParameterDescription parameterDescription, out Type resourceType)
         {
             parameterDescription = apiDescription.ParameterDescriptions.FirstOrDefault(
@@ -439,6 +661,15 @@ namespace PVWI.Areas.HelpPage
             return true;
         }
 
+        /// <summary>
+        /// The initialize model description generator.
+        /// </summary>
+        /// <param name="config">
+        /// The config.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ModelDescriptionGenerator"/>.
+        /// </returns>
         private static ModelDescriptionGenerator InitializeModelDescriptionGenerator(HttpConfiguration config)
         {
             ModelDescriptionGenerator modelGenerator = new ModelDescriptionGenerator(config);
@@ -452,9 +683,19 @@ namespace PVWI.Areas.HelpPage
                     modelGenerator.GetOrCreateModelDescription(parameterType);
                 }
             }
+
             return modelGenerator;
         }
 
+        /// <summary>
+        /// The log invalid sample as error.
+        /// </summary>
+        /// <param name="apiModel">
+        /// The api model.
+        /// </param>
+        /// <param name="sample">
+        /// The sample.
+        /// </param>
         private static void LogInvalidSampleAsError(HelpPageApiModel apiModel, object sample)
         {
             InvalidSample invalidSample = sample as InvalidSample;

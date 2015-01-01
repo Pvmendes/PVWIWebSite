@@ -1,91 +1,115 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.ComponentModel.DataAnnotations;
-using System.Globalization;
-using System.Reflection;
-using System.Runtime.Serialization;
-using System.Web.Http;
-using System.Web.Http.Description;
-using System.Xml.Serialization;
-using Newtonsoft.Json;
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ModelDescriptionGenerator.cs" company="PVWI Family">
+//   Todos os direitos reservados.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PVWI.Areas.HelpPage.ModelDescriptions
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Collections.Specialized;
+    using System.ComponentModel.DataAnnotations;
+    using System.Globalization;
+    using System.Reflection;
+    using System.Runtime.Serialization;
+    using System.Web.Http;
+    using System.Web.Http.Description;
+    using System.Xml.Serialization;
+
+    using Newtonsoft.Json;
+
     /// <summary>
     /// Generates model descriptions for given types.
     /// </summary>
     public class ModelDescriptionGenerator
     {
         // Modify this to support more data annotation attributes.
+        /// <summary>
+        /// The annotation text generator.
+        /// </summary>
         private readonly IDictionary<Type, Func<object, string>> AnnotationTextGenerator = new Dictionary<Type, Func<object, string>>
         {
-            { typeof(RequiredAttribute), a => "Required" },
+            { typeof(RequiredAttribute), a => "Required" }, 
             { typeof(RangeAttribute), a =>
                 {
                     RangeAttribute range = (RangeAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "Range: inclusive between {0} and {1}", range.Minimum, range.Maximum);
+                    return string.Format(CultureInfo.CurrentCulture, "Range: inclusive between {0} and {1}", range.Minimum, range.Maximum);
                 }
-            },
+            }, 
             { typeof(MaxLengthAttribute), a =>
                 {
                     MaxLengthAttribute maxLength = (MaxLengthAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "Max length: {0}", maxLength.Length);
+                    return string.Format(CultureInfo.CurrentCulture, "Max length: {0}", maxLength.Length);
                 }
-            },
+            }, 
             { typeof(MinLengthAttribute), a =>
                 {
                     MinLengthAttribute minLength = (MinLengthAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "Min length: {0}", minLength.Length);
+                    return string.Format(CultureInfo.CurrentCulture, "Min length: {0}", minLength.Length);
                 }
-            },
+            }, 
             { typeof(StringLengthAttribute), a =>
                 {
                     StringLengthAttribute strLength = (StringLengthAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "String length: inclusive between {0} and {1}", strLength.MinimumLength, strLength.MaximumLength);
+                    return string.Format(CultureInfo.CurrentCulture, "String length: inclusive between {0} and {1}", strLength.MinimumLength, strLength.MaximumLength);
                 }
-            },
+            }, 
             { typeof(DataTypeAttribute), a =>
                 {
                     DataTypeAttribute dataType = (DataTypeAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "Data type: {0}", dataType.CustomDataType ?? dataType.DataType.ToString());
+                    return string.Format(CultureInfo.CurrentCulture, "Data type: {0}", dataType.CustomDataType ?? dataType.DataType.ToString());
                 }
-            },
+            }, 
             { typeof(RegularExpressionAttribute), a =>
                 {
                     RegularExpressionAttribute regularExpression = (RegularExpressionAttribute)a;
-                    return String.Format(CultureInfo.CurrentCulture, "Matching regular expression pattern: {0}", regularExpression.Pattern);
+                    return string.Format(CultureInfo.CurrentCulture, "Matching regular expression pattern: {0}", regularExpression.Pattern);
                 }
-            },
+            }
         };
 
         // Modify this to add more default documentations.
+        /// <summary>
+        /// The default type documentation.
+        /// </summary>
         private readonly IDictionary<Type, string> DefaultTypeDocumentation = new Dictionary<Type, string>
         {
-            { typeof(Int16), "integer" },
-            { typeof(Int32), "integer" },
-            { typeof(Int64), "integer" },
-            { typeof(UInt16), "unsigned integer" },
-            { typeof(UInt32), "unsigned integer" },
-            { typeof(UInt64), "unsigned integer" },
-            { typeof(Byte), "byte" },
-            { typeof(Char), "character" },
-            { typeof(SByte), "signed byte" },
-            { typeof(Uri), "URI" },
-            { typeof(Single), "decimal number" },
-            { typeof(Double), "decimal number" },
-            { typeof(Decimal), "decimal number" },
-            { typeof(String), "string" },
-            { typeof(Guid), "globally unique identifier" },
-            { typeof(TimeSpan), "time interval" },
-            { typeof(DateTime), "date" },
-            { typeof(DateTimeOffset), "date" },
-            { typeof(Boolean), "boolean" },
+            { typeof(Int16), "integer" }, 
+            { typeof(Int32), "integer" }, 
+            { typeof(Int64), "integer" }, 
+            { typeof(UInt16), "unsigned integer" }, 
+            { typeof(UInt32), "unsigned integer" }, 
+            { typeof(UInt64), "unsigned integer" }, 
+            { typeof(Byte), "byte" }, 
+            { typeof(Char), "character" }, 
+            { typeof(SByte), "signed byte" }, 
+            { typeof(Uri), "URI" }, 
+            { typeof(Single), "decimal number" }, 
+            { typeof(Double), "decimal number" }, 
+            { typeof(Decimal), "decimal number" }, 
+            { typeof(String), "string" }, 
+            { typeof(Guid), "globally unique identifier" }, 
+            { typeof(TimeSpan), "time interval" }, 
+            { typeof(DateTime), "date" }, 
+            { typeof(DateTimeOffset), "date" }, 
+            { typeof(Boolean), "boolean" }
         };
 
+        /// <summary>
+        /// The _documentation provider.
+        /// </summary>
         private Lazy<IModelDocumentationProvider> _documentationProvider;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ModelDescriptionGenerator"/> class.
+        /// </summary>
+        /// <param name="config">
+        /// The config.
+        /// </param>
+        /// <exception cref="ArgumentNullException">
+        /// </exception>
         public ModelDescriptionGenerator(HttpConfiguration config)
         {
             if (config == null)
@@ -97,8 +121,14 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
             GeneratedModels = new Dictionary<string, ModelDescription>(StringComparer.OrdinalIgnoreCase);
         }
 
+        /// <summary>
+        /// Gets the generated models.
+        /// </summary>
         public Dictionary<string, ModelDescription> GeneratedModels { get; private set; }
 
+        /// <summary>
+        /// Gets the documentation provider.
+        /// </summary>
         private IModelDocumentationProvider DocumentationProvider
         {
             get
@@ -107,6 +137,19 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
             }
         }
 
+        /// <summary>
+        /// The get or create model description.
+        /// </summary>
+        /// <param name="modelType">
+        /// The model type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ModelDescription"/>.
+        /// </returns>
+        /// <exception cref="ArgumentNullException">
+        /// </exception>
+        /// <exception cref="InvalidOperationException">
+        /// </exception>
         public ModelDescription GetOrCreateModelDescription(Type modelType)
         {
             if (modelType == null)
@@ -127,12 +170,12 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
                 if (modelType != modelDescription.ModelType)
                 {
                     throw new InvalidOperationException(
-                        String.Format(
-                            CultureInfo.CurrentCulture,
+                        string.Format(
+                            CultureInfo.CurrentCulture, 
                             "A model description could not be created. Duplicate model name '{0}' was found for types '{1}' and '{2}'. " +
-                            "Use the [ModelName] attribute to change the model name for at least one of the types so that it has a unique name.",
-                            modelName,
-                            modelDescription.ModelType.FullName,
+                            "Use the [ModelName] attribute to change the model name for at least one of the types so that it has a unique name.", 
+                            modelName, 
+                            modelDescription.ModelType.FullName, 
                             modelType.FullName));
                 }
 
@@ -161,6 +204,7 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
                         return GenerateCollectionModelDescription(modelType, genericArguments[0]);
                     }
                 }
+
                 if (genericArguments.Length == 2)
                 {
                     Type dictionaryType = typeof(IDictionary<,>).MakeGenericType(genericArguments);
@@ -202,10 +246,22 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
         }
 
         // Change this to provide different name for the member.
+        /// <summary>
+        /// The get member name.
+        /// </summary>
+        /// <param name="member">
+        /// The member.
+        /// </param>
+        /// <param name="hasDataContractAttribute">
+        /// The has data contract attribute.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
         private static string GetMemberName(MemberInfo member, bool hasDataContractAttribute)
         {
             JsonPropertyAttribute jsonProperty = member.GetCustomAttribute<JsonPropertyAttribute>();
-            if (jsonProperty != null && !String.IsNullOrEmpty(jsonProperty.PropertyName))
+            if (jsonProperty != null && !string.IsNullOrEmpty(jsonProperty.PropertyName))
             {
                 return jsonProperty.PropertyName;
             }
@@ -213,7 +269,7 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
             if (hasDataContractAttribute)
             {
                 DataMemberAttribute dataMember = member.GetCustomAttribute<DataMemberAttribute>();
-                if (dataMember != null && !String.IsNullOrEmpty(dataMember.Name))
+                if (dataMember != null && !string.IsNullOrEmpty(dataMember.Name))
                 {
                     return dataMember.Name;
                 }
@@ -222,6 +278,18 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
             return member.Name;
         }
 
+        /// <summary>
+        /// The should display member.
+        /// </summary>
+        /// <param name="member">
+        /// The member.
+        /// </param>
+        /// <param name="hasDataContractAttribute">
+        /// The has data contract attribute.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         private static bool ShouldDisplayMember(MemberInfo member, bool hasDataContractAttribute)
         {
             JsonIgnoreAttribute jsonIgnore = member.GetCustomAttribute<JsonIgnoreAttribute>();
@@ -249,6 +317,15 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
                 (!hasDataContractAttribute || hasMemberAttribute);
         }
 
+        /// <summary>
+        /// The create default documentation.
+        /// </summary>
+        /// <param name="type">
+        /// The type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
         private string CreateDefaultDocumentation(Type type)
         {
             string documentation;
@@ -256,6 +333,7 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
             {
                 return documentation;
             }
+
             if (DocumentationProvider != null)
             {
                 documentation = DocumentationProvider.GetDocumentation(type);
@@ -264,6 +342,15 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
             return documentation;
         }
 
+        /// <summary>
+        /// The generate annotations.
+        /// </summary>
+        /// <param name="property">
+        /// The property.
+        /// </param>
+        /// <param name="propertyModel">
+        /// The property model.
+        /// </param>
         private void GenerateAnnotations(MemberInfo property, ParameterDescription propertyModel)
         {
             List<ParameterAnnotation> annotations = new List<ParameterAnnotation>();
@@ -277,7 +364,7 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
                     annotations.Add(
                         new ParameterAnnotation
                         {
-                            AnnotationAttribute = attribute,
+                            AnnotationAttribute = attribute, 
                             Documentation = textGenerator(attribute)
                         });
                 }
@@ -291,13 +378,14 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
                 {
                     return -1;
                 }
+
                 if (y.AnnotationAttribute is RequiredAttribute)
                 {
                     return 1;
                 }
 
                 // Sort the rest based on alphabetic order of the documentation
-                return String.Compare(x.Documentation, y.Documentation, StringComparison.OrdinalIgnoreCase);
+                return string.Compare(x.Documentation, y.Documentation, StringComparison.OrdinalIgnoreCase);
             });
 
             foreach (ParameterAnnotation annotation in annotations)
@@ -306,6 +394,18 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
             }
         }
 
+        /// <summary>
+        /// The generate collection model description.
+        /// </summary>
+        /// <param name="modelType">
+        /// The model type.
+        /// </param>
+        /// <param name="elementType">
+        /// The element type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="CollectionModelDescription"/>.
+        /// </returns>
         private CollectionModelDescription GenerateCollectionModelDescription(Type modelType, Type elementType)
         {
             ModelDescription collectionModelDescription = GetOrCreateModelDescription(elementType);
@@ -313,8 +413,8 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
             {
                 return new CollectionModelDescription
                 {
-                    Name = ModelNameHelper.GetModelName(modelType),
-                    ModelType = modelType,
+                    Name = ModelNameHelper.GetModelName(modelType), 
+                    ModelType = modelType, 
                     ElementDescription = collectionModelDescription
                 };
             }
@@ -322,12 +422,21 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
             return null;
         }
 
+        /// <summary>
+        /// The generate complex type model description.
+        /// </summary>
+        /// <param name="modelType">
+        /// The model type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ModelDescription"/>.
+        /// </returns>
         private ModelDescription GenerateComplexTypeModelDescription(Type modelType)
         {
             ComplexTypeModelDescription complexModelDescription = new ComplexTypeModelDescription
             {
-                Name = ModelNameHelper.GetModelName(modelType),
-                ModelType = modelType,
+                Name = ModelNameHelper.GetModelName(modelType), 
+                ModelType = modelType, 
                 Documentation = CreateDefaultDocumentation(modelType)
             };
 
@@ -377,6 +486,21 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
             return complexModelDescription;
         }
 
+        /// <summary>
+        /// The generate dictionary model description.
+        /// </summary>
+        /// <param name="modelType">
+        /// The model type.
+        /// </param>
+        /// <param name="keyType">
+        /// The key type.
+        /// </param>
+        /// <param name="valueType">
+        /// The value type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="DictionaryModelDescription"/>.
+        /// </returns>
         private DictionaryModelDescription GenerateDictionaryModelDescription(Type modelType, Type keyType, Type valueType)
         {
             ModelDescription keyModelDescription = GetOrCreateModelDescription(keyType);
@@ -384,19 +508,28 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
 
             return new DictionaryModelDescription
             {
-                Name = ModelNameHelper.GetModelName(modelType),
-                ModelType = modelType,
-                KeyModelDescription = keyModelDescription,
+                Name = ModelNameHelper.GetModelName(modelType), 
+                ModelType = modelType, 
+                KeyModelDescription = keyModelDescription, 
                 ValueModelDescription = valueModelDescription
             };
         }
 
+        /// <summary>
+        /// The generate enum type model description.
+        /// </summary>
+        /// <param name="modelType">
+        /// The model type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="EnumTypeModelDescription"/>.
+        /// </returns>
         private EnumTypeModelDescription GenerateEnumTypeModelDescription(Type modelType)
         {
             EnumTypeModelDescription enumDescription = new EnumTypeModelDescription
             {
-                Name = ModelNameHelper.GetModelName(modelType),
-                ModelType = modelType,
+                Name = ModelNameHelper.GetModelName(modelType), 
+                ModelType = modelType, 
                 Documentation = CreateDefaultDocumentation(modelType)
             };
             bool hasDataContractAttribute = modelType.GetCustomAttribute<DataContractAttribute>() != null;
@@ -406,21 +539,38 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
                 {
                     EnumValueDescription enumValue = new EnumValueDescription
                     {
-                        Name = field.Name,
+                        Name = field.Name, 
                         Value = field.GetRawConstantValue().ToString()
                     };
                     if (DocumentationProvider != null)
                     {
                         enumValue.Documentation = DocumentationProvider.GetDocumentation(field);
                     }
+
                     enumDescription.Values.Add(enumValue);
                 }
             }
+
             GeneratedModels.Add(enumDescription.Name, enumDescription);
 
             return enumDescription;
         }
 
+        /// <summary>
+        /// The generate key value pair model description.
+        /// </summary>
+        /// <param name="modelType">
+        /// The model type.
+        /// </param>
+        /// <param name="keyType">
+        /// The key type.
+        /// </param>
+        /// <param name="valueType">
+        /// The value type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="KeyValuePairModelDescription"/>.
+        /// </returns>
         private KeyValuePairModelDescription GenerateKeyValuePairModelDescription(Type modelType, Type keyType, Type valueType)
         {
             ModelDescription keyModelDescription = GetOrCreateModelDescription(keyType);
@@ -428,19 +578,28 @@ namespace PVWI.Areas.HelpPage.ModelDescriptions
 
             return new KeyValuePairModelDescription
             {
-                Name = ModelNameHelper.GetModelName(modelType),
-                ModelType = modelType,
-                KeyModelDescription = keyModelDescription,
+                Name = ModelNameHelper.GetModelName(modelType), 
+                ModelType = modelType, 
+                KeyModelDescription = keyModelDescription, 
                 ValueModelDescription = valueModelDescription
             };
         }
 
+        /// <summary>
+        /// The generate simple type model description.
+        /// </summary>
+        /// <param name="modelType">
+        /// The model type.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ModelDescription"/>.
+        /// </returns>
         private ModelDescription GenerateSimpleTypeModelDescription(Type modelType)
         {
             SimpleTypeModelDescription simpleModelDescription = new SimpleTypeModelDescription
             {
-                Name = ModelNameHelper.GetModelName(modelType),
-                ModelType = modelType,
+                Name = ModelNameHelper.GetModelName(modelType), 
+                ModelType = modelType, 
                 Documentation = CreateDefaultDocumentation(modelType)
             };
             GeneratedModels.Add(simpleModelDescription.Name, simpleModelDescription);

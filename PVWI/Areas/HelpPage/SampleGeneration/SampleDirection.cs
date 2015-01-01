@@ -1,3 +1,9 @@
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="SampleDirection.cs" company="PVWI Family">
+//   Todos os direitos reservados.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
 namespace PVWI.Areas.HelpPage
 {
     /// <summary>
@@ -5,7 +11,14 @@ namespace PVWI.Areas.HelpPage
     /// </summary>
     public enum SampleDirection
     {
-        Request = 0,
+        /// <summary>
+        /// The request.
+        /// </summary>
+        Request = 0, 
+
+        /// <summary>
+        /// The response.
+        /// </summary>
         Response
     }
 }

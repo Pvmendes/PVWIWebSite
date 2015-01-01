@@ -1,19 +1,28 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Net.Http.Headers;
+// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="HelpPageSampleKey.cs" company="PVWI Family">
+//   Todos os direitos reservados.
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
 
 namespace PVWI.Areas.HelpPage
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Net.Http.Headers;
+
     /// <summary>
     /// This is used to identify the place where the sample should be applied.
     /// </summary>
     public class HelpPageSampleKey
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="HelpPageSampleKey"/> class. 
         /// Creates a new <see cref="HelpPageSampleKey"/> based on media type.
         /// </summary>
-        /// <param name="mediaType">The media type.</param>
+        /// <param name="mediaType">
+        /// The media type.
+        /// </param>
         public HelpPageSampleKey(MediaTypeHeaderValue mediaType)
         {
             if (mediaType == null)
@@ -21,17 +30,22 @@ namespace PVWI.Areas.HelpPage
                 throw new ArgumentNullException("mediaType");
             }
 
-            ActionName = String.Empty;
-            ControllerName = String.Empty;
+            ActionName = string.Empty;
+            ControllerName = string.Empty;
             MediaType = mediaType;
             ParameterNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="HelpPageSampleKey"/> class. 
         /// Creates a new <see cref="HelpPageSampleKey"/> based on media type and CLR type.
         /// </summary>
-        /// <param name="mediaType">The media type.</param>
-        /// <param name="type">The CLR type.</param>
+        /// <param name="mediaType">
+        /// The media type.
+        /// </param>
+        /// <param name="type">
+        /// The CLR type.
+        /// </param>
         public HelpPageSampleKey(MediaTypeHeaderValue mediaType, Type type)
             : this(mediaType)
         {
@@ -44,26 +58,38 @@ namespace PVWI.Areas.HelpPage
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="HelpPageSampleKey"/> class. 
         /// Creates a new <see cref="HelpPageSampleKey"/> based on <see cref="SampleDirection"/>, controller name, action name and parameter names.
         /// </summary>
-        /// <param name="sampleDirection">The <see cref="SampleDirection"/>.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
-        /// <param name="parameterNames">The parameter names.</param>
+        /// <param name="sampleDirection">
+        /// The <see cref="SampleDirection"/>.
+        /// </param>
+        /// <param name="controllerName">
+        /// Name of the controller.
+        /// </param>
+        /// <param name="actionName">
+        /// Name of the action.
+        /// </param>
+        /// <param name="parameterNames">
+        /// The parameter names.
+        /// </param>
         public HelpPageSampleKey(SampleDirection sampleDirection, string controllerName, string actionName, IEnumerable<string> parameterNames)
         {
             if (!Enum.IsDefined(typeof(SampleDirection), sampleDirection))
             {
                 throw new InvalidEnumArgumentException("sampleDirection", (int)sampleDirection, typeof(SampleDirection));
             }
+
             if (controllerName == null)
             {
                 throw new ArgumentNullException("controllerName");
             }
+
             if (actionName == null)
             {
                 throw new ArgumentNullException("actionName");
             }
+
             if (parameterNames == null)
             {
                 throw new ArgumentNullException("parameterNames");
@@ -76,13 +102,24 @@ namespace PVWI.Areas.HelpPage
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="HelpPageSampleKey"/> class. 
         /// Creates a new <see cref="HelpPageSampleKey"/> based on media type, <see cref="SampleDirection"/>, controller name, action name and parameter names.
         /// </summary>
-        /// <param name="mediaType">The media type.</param>
-        /// <param name="sampleDirection">The <see cref="SampleDirection"/>.</param>
-        /// <param name="controllerName">Name of the controller.</param>
-        /// <param name="actionName">Name of the action.</param>
-        /// <param name="parameterNames">The parameter names.</param>
+        /// <param name="mediaType">
+        /// The media type.
+        /// </param>
+        /// <param name="sampleDirection">
+        /// The <see cref="SampleDirection"/>.
+        /// </param>
+        /// <param name="controllerName">
+        /// Name of the controller.
+        /// </param>
+        /// <param name="actionName">
+        /// Name of the action.
+        /// </param>
+        /// <param name="parameterNames">
+        /// The parameter names.
+        /// </param>
         public HelpPageSampleKey(MediaTypeHeaderValue mediaType, SampleDirection sampleDirection, string controllerName, string actionName, IEnumerable<string> parameterNames)
             : this(sampleDirection, controllerName, actionName, parameterNames)
         {
@@ -123,6 +160,9 @@ namespace PVWI.Areas.HelpPage
         /// </summary>
         public HashSet<string> ParameterNames { get; private set; }
 
+        /// <summary>
+        /// Gets the parameter type.
+        /// </summary>
         public Type ParameterType { get; private set; }
 
         /// <summary>
@@ -130,6 +170,15 @@ namespace PVWI.Areas.HelpPage
         /// </summary>
         public SampleDirection? SampleDirection { get; private set; }
 
+        /// <summary>
+        /// The equals.
+        /// </summary>
+        /// <param name="obj">
+        /// The obj.
+        /// </param>
+        /// <returns>
+        /// The <see cref="bool"/>.
+        /// </returns>
         public override bool Equals(object obj)
         {
             HelpPageSampleKey otherKey = obj as HelpPageSampleKey;
@@ -138,14 +187,20 @@ namespace PVWI.Areas.HelpPage
                 return false;
             }
 
-            return String.Equals(ControllerName, otherKey.ControllerName, StringComparison.OrdinalIgnoreCase) &&
-                String.Equals(ActionName, otherKey.ActionName, StringComparison.OrdinalIgnoreCase) &&
+            return string.Equals(ControllerName, otherKey.ControllerName, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(ActionName, otherKey.ActionName, StringComparison.OrdinalIgnoreCase) &&
                 (MediaType == otherKey.MediaType || (MediaType != null && MediaType.Equals(otherKey.MediaType))) &&
                 ParameterType == otherKey.ParameterType &&
                 SampleDirection == otherKey.SampleDirection &&
                 ParameterNames.SetEquals(otherKey.ParameterNames);
         }
 
+        /// <summary>
+        /// The get hash code.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="int"/>.
+        /// </returns>
         public override int GetHashCode()
         {
             int hashCode = ControllerName.ToUpperInvariant().GetHashCode() ^ ActionName.ToUpperInvariant().GetHashCode();
@@ -153,14 +208,17 @@ namespace PVWI.Areas.HelpPage
             {
                 hashCode ^= MediaType.GetHashCode();
             }
+
             if (SampleDirection != null)
             {
                 hashCode ^= SampleDirection.GetHashCode();
             }
+
             if (ParameterType != null)
             {
                 hashCode ^= ParameterType.GetHashCode();
             }
+
             foreach (string parameterName in ParameterNames)
             {
                 hashCode ^= parameterName.ToUpperInvariant().GetHashCode();
