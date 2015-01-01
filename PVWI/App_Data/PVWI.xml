@@ -1,0 +1,3027 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>PVWI</name>
+    </assembly>
+    <members>
+        <member name="T:PVWI.BundleConfig">
+            <summary>
+            The bundle config.
+            </summary>
+        </member>
+        <member name="M:PVWI.BundleConfig.RegisterBundles(System.Web.Optimization.BundleCollection)">
+            <summary>
+            The register bundles.
+            </summary>
+            <param name="bundles">
+            The bundles.
+            </param>
+        </member>
+        <member name="T:PVWI.FilterConfig">
+            <summary>
+            The filter config.
+            </summary>
+        </member>
+        <member name="M:PVWI.FilterConfig.RegisterGlobalFilters(System.Web.Mvc.GlobalFilterCollection)">
+            <summary>
+            The register global filters.
+            </summary>
+            <param name="filters">
+            The filters.
+            </param>
+        </member>
+        <member name="T:PVWI.ApplicationUserManager">
+            <summary>
+            The application user manager.
+            </summary>
+        </member>
+        <member name="M:PVWI.ApplicationUserManager.#ctor(Microsoft.AspNet.Identity.IUserStore{PVWI.Models.ApplicationUser})">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.ApplicationUserManager"/> class.
+            </summary>
+            <param name="store">
+            The store.
+            </param>
+        </member>
+        <member name="M:PVWI.ApplicationUserManager.Create(Microsoft.AspNet.Identity.Owin.IdentityFactoryOptions{PVWI.ApplicationUserManager},Microsoft.Owin.IOwinContext)">
+            <summary>
+            The create.
+            </summary>
+            <param name="options">
+            The options.
+            </param>
+            <param name="context">
+            The context.
+            </param>
+            <returns>
+            The <see cref="T:PVWI.ApplicationUserManager"/>.
+            </returns>
+        </member>
+        <member name="T:PVWI.RouteConfig">
+            <summary>
+            The route config.
+            </summary>
+        </member>
+        <member name="M:PVWI.RouteConfig.RegisterRoutes(System.Web.Routing.RouteCollection)">
+            <summary>
+            The register routes.
+            </summary>
+            <param name="routes">
+            The routes.
+            </param>
+        </member>
+        <member name="T:PVWI.Startup">
+            <summary>
+            The startup.
+            </summary>
+            <summary>
+            The startup.
+            </summary>
+        </member>
+        <member name="M:PVWI.Startup.ConfigureAuth(Owin.IAppBuilder)">
+            <summary>
+            The configure auth.
+            </summary>
+            <param name="app">
+            The app.
+            </param>
+        </member>
+        <member name="M:PVWI.Startup.Configuration(Owin.IAppBuilder)">
+            <summary>
+            The configuration.
+            </summary>
+            <param name="app">
+            The app.
+            </param>
+        </member>
+        <member name="P:PVWI.Startup.OAuthOptions">
+            <summary>
+            Gets the o auth options.
+            </summary>
+        </member>
+        <member name="P:PVWI.Startup.PublicClientId">
+            <summary>
+            Gets the public client id.
+            </summary>
+        </member>
+        <member name="T:PVWI.WebApiConfig">
+            <summary>
+            The web api config.
+            </summary>
+        </member>
+        <member name="M:PVWI.WebApiConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            The register.
+            </summary>
+            <param name="config">
+            The config.
+            </param>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ApiDescriptionExtensions">
+            <summary>
+            The api description extensions.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">
+            The <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </param>
+            <returns>
+            The ID as a string.
+            </returns>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfig.Register(System.Web.Http.HttpConfiguration)">
+            <summary>
+            The register.
+            </summary>
+            <param name="config">
+            The config.
+            </param>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.Controllers.HelpController.ErrorViewName">
+            <summary>
+            The error view name.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.Controllers.HelpController.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.Controllers.HelpController"/> class.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.Controllers.HelpController.#ctor(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.Controllers.HelpController"/> class.
+            </summary>
+            <param name="config">
+            The config.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.Controllers.HelpController.Index">
+            <summary>
+            The index.
+            </summary>
+            <returns>
+            The <see cref="T:System.Web.Mvc.ActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.Controllers.HelpController.Api(System.String)">
+            <summary>
+            The api.
+            </summary>
+            <param name="apiId">
+            The api id.
+            </param>
+            <returns>
+            The <see cref="T:System.Web.Mvc.ActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.Controllers.HelpController.ResourceModel(System.String)">
+            <summary>
+            The resource model.
+            </summary>
+            <param name="modelName">
+            The model name.
+            </param>
+            <returns>
+            The <see cref="T:System.Web.Mvc.ActionResult"/>.
+            </returns>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.Controllers.HelpController.Configuration">
+            <summary>
+            Gets the configuration.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.HelpPageAreaRegistration">
+            <summary>
+            The help page area registration.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageAreaRegistration.RegisterArea(System.Web.Mvc.AreaRegistrationContext)">
+            <summary>
+            The register area.
+            </summary>
+            <param name="context">
+            The context.
+            </param>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.HelpPageAreaRegistration.AreaName">
+            <summary>
+            Gets the area name.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions">
+            <summary>
+            The help page configuration extensions.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.ApiModelPrefix">
+            <summary>
+            The api model prefix.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">
+            The <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </param>
+            <param name="documentationProvider">
+            The documentation provider.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">
+            The <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </param>
+            <param name="sampleObjects">
+            The sample objects.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">
+            The <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </param>
+            <param name="sample">
+            The sample request.
+            </param>
+            <param name="mediaType">
+            The media type.
+            </param>
+            <param name="controllerName">
+            Name of the controller.
+            </param>
+            <param name="actionName">
+            Name of the action.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">
+            The <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </param>
+            <param name="sample">
+            The sample request.
+            </param>
+            <param name="mediaType">
+            The media type.
+            </param>
+            <param name="controllerName">
+            Name of the controller.
+            </param>
+            <param name="actionName">
+            Name of the action.
+            </param>
+            <param name="parameterNames">
+            The parameter names.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">
+            The <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </param>
+            <param name="sample">
+            The sample response.
+            </param>
+            <param name="mediaType">
+            The media type.
+            </param>
+            <param name="controllerName">
+            Name of the controller.
+            </param>
+            <param name="actionName">
+            Name of the action.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">
+            The <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </param>
+            <param name="sample">
+            The sample response.
+            </param>
+            <param name="mediaType">
+            The media type.
+            </param>
+            <param name="controllerName">
+            Name of the controller.
+            </param>
+            <param name="actionName">
+            Name of the action.
+            </param>
+            <param name="parameterNames">
+            The parameter names.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForMediaType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Sets the sample directly for all actions with the specified media type.
+            </summary>
+            <param name="config">
+            The <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </param>
+            <param name="sample">
+            The sample.
+            </param>
+            <param name="mediaType">
+            The media type.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">
+            The <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </param>
+            <param name="sample">
+            The sample.
+            </param>
+            <param name="mediaType">
+            The media type.
+            </param>
+            <param name="type">
+            The parameter type or return type of an action.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">
+            The <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </param>
+            <param name="type">
+            The type.
+            </param>
+            <param name="controllerName">
+            Name of the controller.
+            </param>
+            <param name="actionName">
+            Name of the action.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">
+            The <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </param>
+            <param name="type">
+            The type.
+            </param>
+            <param name="controllerName">
+            Name of the controller.
+            </param>
+            <param name="actionName">
+            Name of the action.
+            </param>
+            <param name="parameterNames">
+            The parameter names.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">
+            The <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </param>
+            <param name="type">
+            The type.
+            </param>
+            <param name="controllerName">
+            Name of the controller.
+            </param>
+            <param name="actionName">
+            Name of the action.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">
+            The <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </param>
+            <param name="type">
+            The type.
+            </param>
+            <param name="controllerName">
+            Name of the controller.
+            </param>
+            <param name="actionName">
+            Name of the action.
+            </param>
+            <param name="parameterNames">
+            The parameter names.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">
+            The <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </param>
+            <returns>
+            The help page sample generator.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,PVWI.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">
+            The <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </param>
+            <param name="sampleGenerator">
+            The help page sample generator.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.GetModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the model description generator.
+            </summary>
+            <param name="config">
+            The configuration.
+            </param>
+            <returns>
+            The <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/>
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">
+            The <see cref="T:System.Web.Http.HttpConfiguration"/>.
+            </param>
+            <param name="apiDescriptionId">
+            The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.
+            </param>
+            <returns>
+            An <see cref="T:PVWI.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.GenerateApiModel(System.Web.Http.Description.ApiDescription,System.Web.Http.HttpConfiguration)">
+            <summary>
+            The generate api model.
+            </summary>
+            <param name="apiDescription">
+            The api description.
+            </param>
+            <param name="config">
+            The config.
+            </param>
+            <returns>
+            The <see cref="T:PVWI.Areas.HelpPage.Models.HelpPageApiModel"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.GenerateUriParameters(PVWI.Areas.HelpPage.Models.HelpPageApiModel,PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator)">
+            <summary>
+            The generate uri parameters.
+            </summary>
+            <param name="apiModel">
+            The api model.
+            </param>
+            <param name="modelGenerator">
+            The model generator.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.IsBindableWithTypeConverter(System.Type)">
+            <summary>
+            The is bindable with type converter.
+            </summary>
+            <param name="parameterType">
+            The parameter type.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.AddParameterDescription(PVWI.Areas.HelpPage.Models.HelpPageApiModel,System.Web.Http.Description.ApiParameterDescription,PVWI.Areas.HelpPage.ModelDescriptions.ModelDescription)">
+            <summary>
+            The add parameter description.
+            </summary>
+            <param name="apiModel">
+            The api model.
+            </param>
+            <param name="apiParameter">
+            The api parameter.
+            </param>
+            <param name="typeDescription">
+            The type description.
+            </param>
+            <returns>
+            The <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.ParameterDescription"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.GenerateRequestModelDescription(PVWI.Areas.HelpPage.Models.HelpPageApiModel,PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator,PVWI.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            The generate request model description.
+            </summary>
+            <param name="apiModel">
+            The api model.
+            </param>
+            <param name="modelGenerator">
+            The model generator.
+            </param>
+            <param name="sampleGenerator">
+            The sample generator.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.GenerateResourceDescription(PVWI.Areas.HelpPage.Models.HelpPageApiModel,PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator)">
+            <summary>
+            The generate resource description.
+            </summary>
+            <param name="apiModel">
+            The api model.
+            </param>
+            <param name="modelGenerator">
+            The model generator.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.GenerateSamples(PVWI.Areas.HelpPage.Models.HelpPageApiModel,PVWI.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            The generate samples.
+            </summary>
+            <param name="apiModel">
+            The api model.
+            </param>
+            <param name="sampleGenerator">
+            The sample generator.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.TryGetResourceParameter(System.Web.Http.Description.ApiDescription,System.Web.Http.HttpConfiguration,System.Web.Http.Description.ApiParameterDescription@,System.Type@)">
+            <summary>
+            The try get resource parameter.
+            </summary>
+            <param name="apiDescription">
+            The api description.
+            </param>
+            <param name="config">
+            The config.
+            </param>
+            <param name="parameterDescription">
+            The parameter description.
+            </param>
+            <param name="resourceType">
+            The resource type.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.InitializeModelDescriptionGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            The initialize model description generator.
+            </summary>
+            <param name="config">
+            The config.
+            </param>
+            <returns>
+            The <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageConfigurationExtensions.LogInvalidSampleAsError(PVWI.Areas.HelpPage.Models.HelpPageApiModel,System.Object)">
+            <summary>
+            The log invalid sample as error.
+            </summary>
+            <param name="apiModel">
+            The api model.
+            </param>
+            <param name="sample">
+            The sample.
+            </param>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ModelDescriptions.CollectionModelDescription">
+            <summary>
+            The collection model description.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescription">
+            <summary>
+            Describes a type model.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescription.Documentation">
+            <summary>
+            Gets or sets the documentation.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescription.ModelType">
+            <summary>
+            Gets or sets the model type.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescription.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.CollectionModelDescription.ElementDescription">
+            <summary>
+            Gets or sets the element description.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ModelDescriptions.ComplexTypeModelDescription">
+            <summary>
+            The complex type model description.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ComplexTypeModelDescription.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.ComplexTypeModelDescription"/> class.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.ComplexTypeModelDescription.Properties">
+            <summary>
+            Gets the properties.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ModelDescriptions.DictionaryModelDescription">
+            <summary>
+            The dictionary model description.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription">
+            <summary>
+            The key value pair model description.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription.KeyModelDescription">
+            <summary>
+            Gets or sets the key model description.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription.ValueModelDescription">
+            <summary>
+            Gets or sets the value model description.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription">
+            <summary>
+            The enum type model description.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription"/> class.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription.Values">
+            <summary>
+            Gets the values.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ModelDescriptions.EnumValueDescription">
+            <summary>
+            The enum value description.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.EnumValueDescription.Documentation">
+            <summary>
+            Gets or sets the documentation.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.EnumValueDescription.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.EnumValueDescription.Value">
+            <summary>
+            Gets or sets the value.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ModelDescriptions.IModelDocumentationProvider">
+            <summary>
+            The ModelDocumentationProvider interface.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.IModelDocumentationProvider.GetDocumentation(System.Reflection.MemberInfo)">
+            <summary>
+            The get documentation.
+            </summary>
+            <param name="member">
+            The member.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.IModelDocumentationProvider.GetDocumentation(System.Type)">
+            <summary>
+            The get documentation.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator">
+            <summary>
+            Generates model descriptions for given types.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.AnnotationTextGenerator">
+            <summary>
+            The annotation text generator.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.DefaultTypeDocumentation">
+            <summary>
+            The default type documentation.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator._documentationProvider">
+            <summary>
+            The _documentation provider.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.#ctor(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator"/> class.
+            </summary>
+            <param name="config">
+            The config.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            </exception>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GetOrCreateModelDescription(System.Type)">
+            <summary>
+            The get or create model description.
+            </summary>
+            <param name="modelType">
+            The model type.
+            </param>
+            <returns>
+            The <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescription"/>.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            </exception>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GetMemberName(System.Reflection.MemberInfo,System.Boolean)">
+            <summary>
+            The get member name.
+            </summary>
+            <param name="member">
+            The member.
+            </param>
+            <param name="hasDataContractAttribute">
+            The has data contract attribute.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.ShouldDisplayMember(System.Reflection.MemberInfo,System.Boolean)">
+            <summary>
+            The should display member.
+            </summary>
+            <param name="member">
+            The member.
+            </param>
+            <param name="hasDataContractAttribute">
+            The has data contract attribute.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.CreateDefaultDocumentation(System.Type)">
+            <summary>
+            The create default documentation.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GenerateAnnotations(System.Reflection.MemberInfo,PVWI.Areas.HelpPage.ModelDescriptions.ParameterDescription)">
+            <summary>
+            The generate annotations.
+            </summary>
+            <param name="property">
+            The property.
+            </param>
+            <param name="propertyModel">
+            The property model.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GenerateCollectionModelDescription(System.Type,System.Type)">
+            <summary>
+            The generate collection model description.
+            </summary>
+            <param name="modelType">
+            The model type.
+            </param>
+            <param name="elementType">
+            The element type.
+            </param>
+            <returns>
+            The <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.CollectionModelDescription"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GenerateComplexTypeModelDescription(System.Type)">
+            <summary>
+            The generate complex type model description.
+            </summary>
+            <param name="modelType">
+            The model type.
+            </param>
+            <returns>
+            The <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescription"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GenerateDictionaryModelDescription(System.Type,System.Type,System.Type)">
+            <summary>
+            The generate dictionary model description.
+            </summary>
+            <param name="modelType">
+            The model type.
+            </param>
+            <param name="keyType">
+            The key type.
+            </param>
+            <param name="valueType">
+            The value type.
+            </param>
+            <returns>
+            The <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.DictionaryModelDescription"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GenerateEnumTypeModelDescription(System.Type)">
+            <summary>
+            The generate enum type model description.
+            </summary>
+            <param name="modelType">
+            The model type.
+            </param>
+            <returns>
+            The <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.EnumTypeModelDescription"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GenerateKeyValuePairModelDescription(System.Type,System.Type,System.Type)">
+            <summary>
+            The generate key value pair model description.
+            </summary>
+            <param name="modelType">
+            The model type.
+            </param>
+            <param name="keyType">
+            The key type.
+            </param>
+            <param name="valueType">
+            The value type.
+            </param>
+            <returns>
+            The <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.KeyValuePairModelDescription"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GenerateSimpleTypeModelDescription(System.Type)">
+            <summary>
+            The generate simple type model description.
+            </summary>
+            <param name="modelType">
+            The model type.
+            </param>
+            <returns>
+            The <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescription"/>.
+            </returns>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.GeneratedModels">
+            <summary>
+            Gets the generated models.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescriptionGenerator.DocumentationProvider">
+            <summary>
+            Gets the documentation provider.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ModelDescriptions.ModelNameAttribute">
+            <summary>
+            Use this attribute to change the name of the <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescription"/> generated for a type.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ModelNameAttribute.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.ModelNameAttribute"/> class.
+            </summary>
+            <param name="name">
+            The name.
+            </param>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.ModelNameAttribute.Name">
+            <summary>
+            Gets the name.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ModelDescriptions.ModelNameHelper">
+            <summary>
+            The model name helper.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ModelNameHelper.GetModelName(System.Type)">
+            <summary>
+            The get model name.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ModelDescriptions.ParameterAnnotation">
+            <summary>
+            The parameter annotation.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.ParameterAnnotation.AnnotationAttribute">
+            <summary>
+            Gets or sets the annotation attribute.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.ParameterAnnotation.Documentation">
+            <summary>
+            Gets or sets the documentation.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ModelDescriptions.ParameterDescription">
+            <summary>
+            The parameter description.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ModelDescriptions.ParameterDescription.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> class.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.ParameterDescription.Annotations">
+            <summary>
+            Gets the annotations.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.ParameterDescription.Documentation">
+            <summary>
+            Gets or sets the documentation.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.ParameterDescription.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ModelDescriptions.ParameterDescription.TypeDescription">
+            <summary>
+            Gets or sets the type description.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ModelDescriptions.SimpleTypeModelDescription">
+            <summary>
+            The simple type model description.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.Models.HelpPageApiModel.GetParameterDescriptions(PVWI.Areas.HelpPage.ModelDescriptions.ModelDescription)">
+            <summary>
+            The get parameter descriptions.
+            </summary>
+            <param name="modelDescription">
+            The model description.
+            </param>
+            <returns>
+            The <see cref="!:IList"/>.
+            </returns>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:PVWI.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.Models.HelpPageApiModel.UriParameters">
+            <summary>
+            Gets or sets the <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.ParameterDescription"/> collection that describes the URI parameters for the API.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.Models.HelpPageApiModel.RequestDocumentation">
+            <summary>
+            Gets or sets the documentation for the request.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.Models.HelpPageApiModel.RequestModelDescription">
+            <summary>
+            Gets or sets the <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the request body.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.Models.HelpPageApiModel.RequestBodyParameters">
+            <summary>
+            Gets the request body parameter descriptions.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.Models.HelpPageApiModel.ResourceDescription">
+            <summary>
+            Gets or sets the <see cref="T:PVWI.Areas.HelpPage.ModelDescriptions.ModelDescription"/> that describes the resource.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.Models.HelpPageApiModel.ResourceProperties">
+            <summary>
+            Gets the resource property descriptions.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">
+            The <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </param>
+            <returns>
+            The samples keyed by media type.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">
+            The <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </param>
+            <returns>
+            The samples keyed by media type.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,PVWI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">
+            The <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </param>
+            <param name="sampleDirection">
+            The value indicating whether the sample is for a request or for a response.
+            </param>
+            <returns>
+            The samples keyed by media type.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,PVWI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:PVWI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">
+            Name of the controller.
+            </param>
+            <param name="actionName">
+            Name of the action.
+            </param>
+            <param name="parameterNames">
+            The parameter names.
+            </param>
+            <param name="type">
+            The CLR type.
+            </param>
+            <param name="formatter">
+            The formatter.
+            </param>
+            <param name="mediaType">
+            The media type.
+            </param>
+            <param name="sampleDirection">
+            The value indicating whether the sample is for a request or for a response.
+            </param>
+            <returns>
+            The sample that matches the parameters.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:PVWI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
+            one using <see cref="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(PVWI.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:PVWI.Areas.HelpPage.ObjectGenerator"/>) and other
+            factories in <see cref="P:PVWI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The sample object.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.ResolveHttpRequestMessageType(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Resolves the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action.
+            </summary>
+            <param name="api">
+            The <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </param>
+            <returns>
+            The type.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},PVWI.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">
+            The <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </param>
+            <param name="controllerName">
+            Name of the controller.
+            </param>
+            <param name="actionName">
+            Name of the action.
+            </param>
+            <param name="parameterNames">
+            The parameter names.
+            </param>
+            <param name="sampleDirection">
+            The value indicating whether the sample is for a request or a response.
+            </param>
+            <param name="formatters">
+            The formatters.
+            </param>
+            <returns>
+            The <see cref="T:System.Type"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">
+            The formatter.
+            </param>
+            <param name="value">
+            The value.
+            </param>
+            <param name="type">
+            The type.
+            </param>
+            <param name="mediaType">
+            Type of the media.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.UnwrapException(System.Exception)">
+            <summary>
+            The unwrap exception.
+            </summary>
+            <param name="exception">
+            The exception.
+            </param>
+            <returns>
+            The <see cref="T:System.Exception"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(PVWI.Areas.HelpPage.HelpPageSampleGenerator,System.Type)">
+            <summary>
+            The default sample object factory.
+            </summary>
+            <param name="sampleGenerator">
+            The sample generator.
+            </param>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.TryFormatJson(System.String)">
+            <summary>
+            The try format json.
+            </summary>
+            <param name="str">
+            The str.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.TryFormatXml(System.String)">
+            <summary>
+            The try format xml.
+            </summary>
+            <param name="str">
+            The str.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.IsFormatSupported(PVWI.Areas.HelpPage.SampleDirection,System.Net.Http.Formatting.MediaTypeFormatter,System.Type)">
+            <summary>
+            The is format supported.
+            </summary>
+            <param name="sampleDirection">
+            The sample direction.
+            </param>
+            <param name="formatter">
+            The formatter.
+            </param>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.GetAllActionSamples(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},PVWI.Areas.HelpPage.SampleDirection)">
+            <summary>
+            The get all action samples.
+            </summary>
+            <param name="controllerName">
+            The controller name.
+            </param>
+            <param name="actionName">
+            The action name.
+            </param>
+            <param name="parameterNames">
+            The parameter names.
+            </param>
+            <param name="sampleDirection">
+            The sample direction.
+            </param>
+            <returns>
+            The <see cref="!:IEnumerable"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleGenerator.WrapSampleIfString(System.Object)">
+            <summary>
+            The wrap sample if string.
+            </summary>
+            <param name="sample">
+            The sample.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories">
+            <summary>
+            Gets factories for the objects that the supported formatters will serialize as samples. Processed in order,
+            stopping when the factory successfully returns a non-<see langref="null"/> object.
+            </summary>
+            <remarks>
+            Collection includes just <see cref="M:PVWI.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)"/> initially. Use
+            <code>SampleObjectFactories.Insert(0, func)</code> to provide an override and
+            <code>SampleObjectFactories.Add(func)</code> to provide a fallback.</remarks>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.HelpPageSampleKey"/> class. 
+            Creates a new <see cref="T:PVWI.Areas.HelpPage.HelpPageSampleKey"/> based on media type.
+            </summary>
+            <param name="mediaType">
+            The media type.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.HelpPageSampleKey"/> class. 
+            Creates a new <see cref="T:PVWI.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">
+            The media type.
+            </param>
+            <param name="type">
+            The CLR type.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleKey.#ctor(PVWI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.HelpPageSampleKey"/> class. 
+            Creates a new <see cref="T:PVWI.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:PVWI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">
+            The <see cref="P:PVWI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </param>
+            <param name="controllerName">
+            Name of the controller.
+            </param>
+            <param name="actionName">
+            Name of the action.
+            </param>
+            <param name="parameterNames">
+            The parameter names.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,PVWI.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.HelpPageSampleKey"/> class. 
+            Creates a new <see cref="T:PVWI.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:PVWI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">
+            The media type.
+            </param>
+            <param name="sampleDirection">
+            The <see cref="P:PVWI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </param>
+            <param name="controllerName">
+            Name of the controller.
+            </param>
+            <param name="actionName">
+            Name of the action.
+            </param>
+            <param name="parameterNames">
+            The parameter names.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleKey.Equals(System.Object)">
+            <summary>
+            The equals.
+            </summary>
+            <param name="obj">
+            The obj.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.HelpPageSampleKey.GetHashCode">
+            <summary>
+            The get hash code.
+            </summary>
+            <returns>
+            The <see cref="T:System.Int32"/>.
+            </returns>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.HelpPageSampleKey.ParameterType">
+            <summary>
+            Gets the parameter type.
+            </summary>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:PVWI.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">
+            The URL of an image.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ImageSample.Equals(System.Object)">
+            <summary>
+            The equals.
+            </summary>
+            <param name="obj">
+            The obj.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ImageSample.GetHashCode">
+            <summary>
+            The get hash code.
+            </summary>
+            <returns>
+            The <see cref="T:System.Int32"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ImageSample.ToString">
+            <summary>
+            The to string.
+            </summary>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.ImageSample.Src">
+            <summary>
+            Gets the src.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.InvalidSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.InvalidSample"/> class.
+            </summary>
+            <param name="errorMessage">
+            The error message.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            </exception>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.InvalidSample.Equals(System.Object)">
+            <summary>
+            The equals.
+            </summary>
+            <param name="obj">
+            The obj.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.InvalidSample.GetHashCode">
+            <summary>
+            The get hash code.
+            </summary>
+            <returns>
+            The <see cref="T:System.Int32"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.InvalidSample.ToString">
+            <summary>
+            The to string.
+            </summary>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.InvalidSample.ErrorMessage">
+            <summary>
+            Gets the error message.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.ObjectGenerator.DefaultCollectionSize">
+            <summary>
+            The default collection size.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.ObjectGenerator.SimpleObjectGenerator">
+            <summary>
+            The simple object generator.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            An object of the given type.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            The generate object.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.GenerateGenericType(System.Type,System.Int32,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            The generate generic type.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <param name="collectionSize">
+            The collection size.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.GenerateTuple(System.Type,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            The generate tuple.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.IsTuple(System.Type)">
+            <summary>
+            The is tuple.
+            </summary>
+            <param name="genericTypeDefinition">
+            The generic type definition.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.GenerateKeyValuePair(System.Type,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            The generate key value pair.
+            </summary>
+            <param name="keyValuePairType">
+            The key value pair type.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.GenerateArray(System.Type,System.Int32,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            The generate array.
+            </summary>
+            <param name="arrayType">
+            The array type.
+            </param>
+            <param name="size">
+            The size.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.GenerateDictionary(System.Type,System.Int32,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            The generate dictionary.
+            </summary>
+            <param name="dictionaryType">
+            The dictionary type.
+            </param>
+            <param name="size">
+            The size.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.GenerateEnum(System.Type)">
+            <summary>
+            The generate enum.
+            </summary>
+            <param name="enumType">
+            The enum type.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.GenerateQueryable(System.Type,System.Int32,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            The generate queryable.
+            </summary>
+            <param name="queryableType">
+            The queryable type.
+            </param>
+            <param name="size">
+            The size.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.GenerateCollection(System.Type,System.Int32,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            The generate collection.
+            </summary>
+            <param name="collectionType">
+            The collection type.
+            </param>
+            <param name="size">
+            The size.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.GenerateNullable(System.Type,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            The generate nullable.
+            </summary>
+            <param name="nullableType">
+            The nullable type.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.GenerateComplexObject(System.Type,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            The generate complex object.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.SetPublicProperties(System.Type,System.Object,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            The set public properties.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <param name="obj">
+            The obj.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.SetPublicFields(System.Type,System.Object,System.Collections.Generic.Dictionary{System.Type,System.Object})">
+            <summary>
+            The set public fields.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <param name="obj">
+            The obj.
+            </param>
+            <param name="createdObjectReferences">
+            The created object references.
+            </param>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.ObjectGenerator.SimpleTypeObjectGenerator">
+            <summary>
+            The simple type object generator.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.ObjectGenerator.SimpleTypeObjectGenerator._index">
+            <summary>
+            The _index.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.ObjectGenerator.SimpleTypeObjectGenerator.DefaultGenerators">
+            <summary>
+            The default generators.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.SimpleTypeObjectGenerator.InitializeGenerators">
+            <summary>
+            The initialize generators.
+            </summary>
+            <returns>
+            The <see cref="!:Dictionary"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.SimpleTypeObjectGenerator.CanGenerateObject(System.Type)">
+            <summary>
+            The can generate object.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.ObjectGenerator.SimpleTypeObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            The generate object.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.Object"/>.
+            </returns>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.SampleDirection.Request">
+            <summary>
+            The request.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.SampleDirection.Response">
+            <summary>
+            The response.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.TextSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.TextSample"/> class.
+            </summary>
+            <param name="text">
+            The text.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            </exception>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.TextSample.Equals(System.Object)">
+            <summary>
+            The equals.
+            </summary>
+            <param name="obj">
+            The obj.
+            </param>
+            <returns>
+            The <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.TextSample.GetHashCode">
+            <summary>
+            The get hash code.
+            </summary>
+            <returns>
+            The <see cref="T:System.Int32"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.TextSample.ToString">
+            <summary>
+            The to string.
+            </summary>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="P:PVWI.Areas.HelpPage.TextSample.Text">
+            <summary>
+            Gets the text.
+            </summary>
+        </member>
+        <member name="T:PVWI.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.XmlDocumentationProvider.TypeExpression">
+            <summary>
+            The type expression.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.XmlDocumentationProvider.MethodExpression">
+            <summary>
+            The method expression.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.XmlDocumentationProvider.PropertyExpression">
+            <summary>
+            The property expression.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.XmlDocumentationProvider.FieldExpression">
+            <summary>
+            The field expression.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.XmlDocumentationProvider.ParameterExpression">
+            <summary>
+            The parameter expression.
+            </summary>
+        </member>
+        <member name="F:PVWI.Areas.HelpPage.XmlDocumentationProvider._documentNavigator">
+            <summary>
+            The _document navigator.
+            </summary>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">
+            The physical path to XML document.
+            </param>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpControllerDescriptor)">
+            <summary>
+            The get documentation.
+            </summary>
+            <param name="controllerDescriptor">
+            The controller descriptor.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            The get documentation.
+            </summary>
+            <param name="actionDescriptor">
+            The action descriptor.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Web.Http.Controllers.HttpParameterDescriptor)">
+            <summary>
+            The get documentation.
+            </summary>
+            <param name="parameterDescriptor">
+            The parameter descriptor.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.XmlDocumentationProvider.GetResponseDocumentation(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            The get response documentation.
+            </summary>
+            <param name="actionDescriptor">
+            The action descriptor.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Reflection.MemberInfo)">
+            <summary>
+            The get documentation.
+            </summary>
+            <param name="member">
+            The member.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.XmlDocumentationProvider.GetDocumentation(System.Type)">
+            <summary>
+            The get documentation.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.XmlDocumentationProvider.GetMethodNode(System.Web.Http.Controllers.HttpActionDescriptor)">
+            <summary>
+            The get method node.
+            </summary>
+            <param name="actionDescriptor">
+            The action descriptor.
+            </param>
+            <returns>
+            The <see cref="T:System.Xml.XPath.XPathNavigator"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.XmlDocumentationProvider.GetMemberName(System.Reflection.MethodInfo)">
+            <summary>
+            The get member name.
+            </summary>
+            <param name="method">
+            The method.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.XmlDocumentationProvider.GetTagValue(System.Xml.XPath.XPathNavigator,System.String)">
+            <summary>
+            The get tag value.
+            </summary>
+            <param name="parentNode">
+            The parent node.
+            </param>
+            <param name="tagName">
+            The tag name.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.XmlDocumentationProvider.GetTypeNode(System.Type)">
+            <summary>
+            The get type node.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.Xml.XPath.XPathNavigator"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Areas.HelpPage.XmlDocumentationProvider.GetTypeName(System.Type)">
+            <summary>
+            The get type name.
+            </summary>
+            <param name="type">
+            The type.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+        </member>
+        <member name="T:PVWI.Controllers.AccountController">
+            <summary>
+            The account controller.
+            </summary>
+        </member>
+        <member name="F:PVWI.Controllers.AccountController.LocalLoginProvider">
+            <summary>
+            The local login provider.
+            </summary>
+        </member>
+        <member name="F:PVWI.Controllers.AccountController._userManager">
+            <summary>
+            The _user manager.
+            </summary>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Controllers.AccountController"/> class.
+            </summary>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.#ctor(PVWI.ApplicationUserManager,Microsoft.Owin.Security.ISecureDataFormat{Microsoft.Owin.Security.AuthenticationTicket})">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Controllers.AccountController"/> class.
+            </summary>
+            <param name="userManager">
+            The user manager.
+            </param>
+            <param name="accessTokenFormat">
+            The access token format.
+            </param>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.GetUserInfo">
+            <summary>
+            The get user info.
+            </summary>
+            <returns>
+            The <see cref="T:PVWI.Models.UserInfoViewModel"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.Logout">
+            <summary>
+            The logout.
+            </summary>
+            <returns>
+            The <see cref="T:System.Web.Http.IHttpActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.GetManageInfo(System.String,System.Boolean)">
+            <summary>
+            The get manage info.
+            </summary>
+            <param name="returnUrl">
+            The return url.
+            </param>
+            <param name="generateState">
+            The generate state.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.ChangePassword(PVWI.Models.ChangePasswordBindingModel)">
+            <summary>
+            The change password.
+            </summary>
+            <param name="model">
+            The model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.SetPassword(PVWI.Models.SetPasswordBindingModel)">
+            <summary>
+            The set password.
+            </summary>
+            <param name="model">
+            The model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.AddExternalLogin(PVWI.Models.AddExternalLoginBindingModel)">
+            <summary>
+            The add external login.
+            </summary>
+            <param name="model">
+            The model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.RemoveLogin(PVWI.Models.RemoveLoginBindingModel)">
+            <summary>
+            The remove login.
+            </summary>
+            <param name="model">
+            The model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.GetExternalLogin(System.String,System.String)">
+            <summary>
+            The get external login.
+            </summary>
+            <param name="provider">
+            The provider.
+            </param>
+            <param name="error">
+            The error.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.GetExternalLogins(System.String,System.Boolean)">
+            <summary>
+            The get external logins.
+            </summary>
+            <param name="returnUrl">
+            The return url.
+            </param>
+            <param name="generateState">
+            The generate state.
+            </param>
+            <returns>
+            The <see cref="!:IEnumerable"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.Register(PVWI.Models.RegisterBindingModel)">
+            <summary>
+            The register.
+            </summary>
+            <param name="model">
+            The model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.RegisterExternal(PVWI.Models.RegisterExternalBindingModel)">
+            <summary>
+            The register external.
+            </summary>
+            <param name="model">
+            The model.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.Dispose(System.Boolean)">
+            <summary>
+            The dispose.
+            </summary>
+            <param name="disposing">
+            The disposing.
+            </param>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.GetErrorResult(Microsoft.AspNet.Identity.IdentityResult)">
+            <summary>
+            The get error result.
+            </summary>
+            <param name="result">
+            The result.
+            </param>
+            <returns>
+            The <see cref="T:System.Web.Http.IHttpActionResult"/>.
+            </returns>
+        </member>
+        <member name="P:PVWI.Controllers.AccountController.UserManager">
+            <summary>
+            Gets the user manager.
+            </summary>
+        </member>
+        <member name="P:PVWI.Controllers.AccountController.AccessTokenFormat">
+            <summary>
+            Gets the access token format.
+            </summary>
+        </member>
+        <member name="P:PVWI.Controllers.AccountController.Authentication">
+            <summary>
+            Gets the authentication.
+            </summary>
+        </member>
+        <member name="T:PVWI.Controllers.AccountController.ExternalLoginData">
+            <summary>
+            The external login data.
+            </summary>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.ExternalLoginData.GetClaims">
+            <summary>
+            The get claims.
+            </summary>
+            <returns>
+            The <see cref="!:IList"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.ExternalLoginData.FromIdentity(System.Security.Claims.ClaimsIdentity)">
+            <summary>
+            The from identity.
+            </summary>
+            <param name="identity">
+            The identity.
+            </param>
+            <returns>
+            The <see cref="T:PVWI.Controllers.AccountController.ExternalLoginData"/>.
+            </returns>
+        </member>
+        <member name="P:PVWI.Controllers.AccountController.ExternalLoginData.LoginProvider">
+            <summary>
+            Gets or sets the login provider.
+            </summary>
+        </member>
+        <member name="P:PVWI.Controllers.AccountController.ExternalLoginData.ProviderKey">
+            <summary>
+            Gets or sets the provider key.
+            </summary>
+        </member>
+        <member name="P:PVWI.Controllers.AccountController.ExternalLoginData.UserName">
+            <summary>
+            Gets or sets the user name.
+            </summary>
+        </member>
+        <member name="T:PVWI.Controllers.AccountController.RandomOAuthStateGenerator">
+            <summary>
+            The random o auth state generator.
+            </summary>
+        </member>
+        <member name="F:PVWI.Controllers.AccountController.RandomOAuthStateGenerator._random">
+            <summary>
+            The _random.
+            </summary>
+        </member>
+        <member name="M:PVWI.Controllers.AccountController.RandomOAuthStateGenerator.Generate(System.Int32)">
+            <summary>
+            The generate.
+            </summary>
+            <param name="strengthInBits">
+            The strength in bits.
+            </param>
+            <returns>
+            The <see cref="T:System.String"/>.
+            </returns>
+            <exception cref="T:System.ArgumentException">
+            </exception>
+        </member>
+        <member name="T:PVWI.Controllers.CreditCardBillItemsController">
+            <summary>
+            O Controlador para items de faturas.
+            </summary>
+        </member>
+        <member name="F:PVWI.Controllers.CreditCardBillItemsController.db">
+            <summary>
+            The db.
+            </summary>
+        </member>
+        <member name="M:PVWI.Controllers.CreditCardBillItemsController.GetBillItems">
+            <summary>
+            Retorna todas os items de uma fatura.
+            </summary>
+            <returns>
+            O retorno do tipo <see cref="T:System.Linq.IQueryable"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.CreditCardBillItemsController.GetCreditCardBillItem(System.Int32)">
+            <summary>
+            Retorna o item especificado de uma fatura.
+            </summary>
+            <param name="id">
+            Id do item de uma fatura.
+            </param>
+            <returns>
+            O retorno do tipo <see cref="T:System.Web.Http.IHttpActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.CreditCardBillItemsController.PutCreditCardBillItem(System.Int32,PVWI.Entities.CreditCardBillItem)">
+            <summary>
+            Coloca dados dentro de um item de uma fatura.
+            </summary>
+            <param name="id">
+            Id do item de uma fatura.
+            </param>
+            <param name="creditCardBillItem">
+            O item que sera adicionado dados.
+            </param>
+            <returns>
+            O retorno do tipo <see cref="T:System.Web.Http.IHttpActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.CreditCardBillItemsController.PostCreditCardBillItem(PVWI.Entities.CreditCardBillItem)">
+            <summary>
+            Adiciona um novo item de uma fatura.
+            </summary>
+            <param name="creditCardBillItem">
+            O item a ser adicionado.
+            </param>
+            <returns>
+            O retorno do tipo <see cref="T:System.Web.Http.IHttpActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.CreditCardBillItemsController.DeleteCreditCardBillItem(System.Int32)">
+            <summary>
+            Deleta um item na fatura com o id especifico.
+            </summary>
+            <param name="id">
+            Id do item de uma fatura.
+            </param>
+            <returns>
+            O retorno do tipo <see cref="T:System.Web.Http.IHttpActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.CreditCardBillItemsController.Dispose(System.Boolean)">
+            <summary>
+            Desfaz de um contexto com alteracoes no banco de dados.
+            </summary>
+            <param name="disposing">
+            Indica se esta desfazendo ou nao do contexto do banco de dados.
+            </param>
+        </member>
+        <member name="M:PVWI.Controllers.CreditCardBillItemsController.CreditCardBillItemExists(System.Int32)">
+            <summary>
+            Encontra um item de fatura dentro do banco de dados.
+            </summary>
+            <param name="id">
+            Id do item de uma fatura.
+            </param>
+            <returns>
+            O retorno do tipo <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="T:PVWI.Controllers.HomeController">
+            <summary>
+            The home controller.
+            </summary>
+        </member>
+        <member name="M:PVWI.Controllers.HomeController.Index">
+            <summary>
+            The index.
+            </summary>
+            <returns>
+            The <see cref="T:System.Web.Mvc.ActionResult"/>.
+            </returns>
+        </member>
+        <member name="T:PVWI.Controllers.UsersController">
+            <summary>
+            The users controller.
+            </summary>
+        </member>
+        <member name="F:PVWI.Controllers.UsersController.db">
+            <summary>
+            The db.
+            </summary>
+        </member>
+        <member name="M:PVWI.Controllers.UsersController.GetUsers">
+            <summary>
+            Retorna todos os usuários cadastrados no sistema.
+            </summary>
+            <returns>
+            Tipo de retorno <see cref="T:System.Linq.IQueryable"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.UsersController.GetUser(System.Int32)">
+            <summary>
+            Retorna o usuário específicado pela Id.
+            </summary>
+            <param name="id">
+            A Id de identificação do usuário na tabela do Banco de Dados.
+            </param>
+            <returns>
+            O tipo de retorno <see cref="T:System.Web.Http.IHttpActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.UsersController.PutUser(System.Int32,PVWI.Entities.User)">
+            <summary>
+            Coloca os dados de um usuário específico.
+            </summary>
+            <param name="id">
+            A Id de identificação do usuário na tabela do Banco de Dados.
+            </param>
+            <param name="user">
+            O objeto do tipo entidade usuário.
+            </param>
+            <returns>
+            O tipo de retorno <see cref="T:System.Web.Http.IHttpActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.UsersController.PostUser(PVWI.Entities.User)">
+            <summary>
+            Adiciona um usuário.
+            </summary>
+            <param name="user">
+            O usuário pronto para adicionar no banco de dados.
+            </param>
+            <returns>
+            O tipo de retorno <see cref="T:System.Web.Http.IHttpActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.UsersController.DeleteUser(System.Int32)">
+            <summary>
+            Deleta um usuário específicado pela Id.
+            </summary>
+            <param name="id">
+            A Id de identificação do usuário na tabela do Banco de Dados.
+            </param>
+            <returns>
+            O retorno do tipo <see cref="T:System.Web.Http.IHttpActionResult"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Controllers.UsersController.Dispose(System.Boolean)">
+            <summary>
+            Se defaz do contexto do banco de dados.
+            </summary>
+            <param name="disposing">
+            Ação de verdadeiro ou falso se está sendo desfeita ou não dos dados do Contexto para o banco de dados.
+            </param>
+        </member>
+        <member name="M:PVWI.Controllers.UsersController.UserExists(System.Int32)">
+            <summary>
+            Checa se o usuário específicado pela Id existe.
+            </summary>
+            <param name="id">
+            A Id de identificação do usuário na tabela do Banco de Dados.
+            </param>
+            <returns>
+            O retorno do tipo <see cref="T:System.Boolean"/>.
+            </returns>
+        </member>
+        <member name="T:PVWI.DAO.PvwiContext">
+            <summary>
+            Contexto usado para consultas no banco de dados para faturas.
+            </summary>
+        </member>
+        <member name="M:PVWI.DAO.PvwiContext.OnModelCreating(System.Data.Entity.DbModelBuilder)">
+            <summary>
+            This method is called when the model for a derived context has been initialized, but
+                        before the model has been locked down and used to initialize the context.  The default
+                        implementation of this method does nothing, but it can be overridden in a derived class
+                        such that the model can be further configured before it is locked down.
+            </summary>
+            <remarks>
+            Typically, this method is called only once when the first instance of a derived context
+                        is created.  The model for that context is then cached and is for all further instances of
+                        the context in the app domain.  This caching can be disabled by setting the ModelCaching
+                        property on the given ModelBuidler, but note that this can seriously degrade performance.
+                        More control over caching is provided through use of the DbModelBuilder and DbContextFactory
+                        classes directly.
+            </remarks>
+            <param name="modelBuilder">
+            The builder that defines the model for the context being created. 
+            </param>
+        </member>
+        <member name="P:PVWI.DAO.PvwiContext.Users">
+            <summary>
+            Usuários do sistema que podem ser inclusos em uma fatura.
+            </summary>
+        </member>
+        <member name="P:PVWI.DAO.PvwiContext.BillItems">
+            <summary>
+            Tabela de items dentro de uma fatura.
+            </summary>
+        </member>
+        <member name="T:PVWI.Entities.CreditCardBill">
+            <summary>
+            The credit card bill.
+            </summary>
+        </member>
+        <member name="P:PVWI.Entities.CreditCardBill.Id">
+            <summary>
+            Id da fatura no banco de dados.
+            </summary>
+        </member>
+        <member name="P:PVWI.Entities.CreditCardBill.BillPaymentDateTime">
+            <summary>
+            Dia de Pagamento da fatura.
+            </summary>
+        </member>
+        <member name="T:PVWI.Entities.CreditCardBillItem">
+            <summary>
+            Define os campos que um item de uma fatura deve ter.
+            </summary>
+        </member>
+        <member name="P:PVWI.Entities.CreditCardBillItem.Id">
+            <summary>
+            Id para pesquisa no banco de dados.
+            </summary>
+        </member>
+        <member name="P:PVWI.Entities.CreditCardBillItem.Description">
+            <summary>
+            Descrição que o item possui na fatura.
+            </summary>
+        </member>
+        <member name="P:PVWI.Entities.CreditCardBillItem.DateTime">
+            <summary>
+            Data que o item possui na fatura.
+            </summary>
+        </member>
+        <member name="P:PVWI.Entities.CreditCardBillItem.ItemValue">
+            <summary>
+            Valor em reais que o item possui na fatura.
+            </summary>
+        </member>
+        <member name="P:PVWI.Entities.CreditCardBillItem.UserId">
+            <summary>
+            Id do usuário que é responsável por pagar aquele item na fatura.
+            </summary>
+        </member>
+        <member name="P:PVWI.Entities.CreditCardBillItem.User">
+            <summary>
+            Objeto do tipo usuário que é responsável por pagar aquele item na fatura.
+            </summary>
+        </member>
+        <member name="P:PVWI.Entities.CreditCardBillItem.CreditCardBillId">
+            <summary>
+            Id da fatura que o item pertence.
+            </summary>
+        </member>
+        <member name="P:PVWI.Entities.CreditCardBillItem.CreditCardBill">
+            <summary>
+            Objeto do tipo fatura que o item pertence.
+            </summary>
+        </member>
+        <member name="T:PVWI.Entities.User">
+            <summary>
+            Entidade com todos os campos que um usuário irá ter.
+            </summary>
+        </member>
+        <member name="P:PVWI.Entities.User.Id">
+            <summary>
+            Id do usuário para referência no banco de dados.
+            </summary>
+        </member>
+        <member name="P:PVWI.Entities.User.Name">
+            <summary>
+            Nome do usuário obrigatório no banco de dados.
+            </summary>
+        </member>
+        <member name="P:PVWI.Entities.User.Email">
+            <summary>
+            E-mail do usuário obrigatório no banco de dados e valida como um formato de e-mail.
+            </summary>
+        </member>
+        <member name="T:PVWI.WebApiApplication">
+            <summary>
+            The web api application.
+            </summary>
+        </member>
+        <member name="M:PVWI.WebApiApplication.Application_Start">
+            <summary>
+            The application_ start.
+            </summary>
+        </member>
+        <member name="T:PVWI.Migrations.InicialTables">
+            <summary>
+            The inicial tables.
+            </summary>
+            <summary>
+            The inicial tables.
+            </summary>
+        </member>
+        <member name="M:PVWI.Migrations.InicialTables.Up">
+            <summary>
+            The up.
+            </summary>
+        </member>
+        <member name="M:PVWI.Migrations.InicialTables.Down">
+            <summary>
+            The down.
+            </summary>
+        </member>
+        <member name="F:PVWI.Migrations.InicialTables.Resources">
+            <summary>
+            The resources.
+            </summary>
+        </member>
+        <member name="P:PVWI.Migrations.InicialTables.System#Data#Entity#Migrations#Infrastructure#IMigrationMetadata#Id">
+            <summary>
+            Gets the id.
+            </summary>
+        </member>
+        <member name="P:PVWI.Migrations.InicialTables.System#Data#Entity#Migrations#Infrastructure#IMigrationMetadata#Source">
+            <summary>
+            Gets the source.
+            </summary>
+        </member>
+        <member name="P:PVWI.Migrations.InicialTables.System#Data#Entity#Migrations#Infrastructure#IMigrationMetadata#Target">
+            <summary>
+            Gets the target.
+            </summary>
+        </member>
+        <member name="T:PVWI.Migrations.Configuration">
+            <summary>
+            The configuration.
+            </summary>
+        </member>
+        <member name="M:PVWI.Migrations.Configuration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Migrations.Configuration"/> class.
+            </summary>
+        </member>
+        <member name="M:PVWI.Migrations.Configuration.Seed(PVWI.DAO.PvwiContext)">
+            <summary>
+            The seed.
+            </summary>
+            <param name="context">
+            The context.
+            </param>
+        </member>
+        <member name="T:PVWI.Models.AddExternalLoginBindingModel">
+            <summary>
+            The add external login binding model.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.AddExternalLoginBindingModel.ExternalAccessToken">
+            <summary>
+            Gets or sets the external access token.
+            </summary>
+        </member>
+        <member name="T:PVWI.Models.ChangePasswordBindingModel">
+            <summary>
+            The change password binding model.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.ChangePasswordBindingModel.OldPassword">
+            <summary>
+            Gets or sets the old password.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.ChangePasswordBindingModel.NewPassword">
+            <summary>
+            Gets or sets the new password.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.ChangePasswordBindingModel.ConfirmPassword">
+            <summary>
+            Gets or sets the confirm password.
+            </summary>
+        </member>
+        <member name="T:PVWI.Models.RegisterBindingModel">
+            <summary>
+            The register binding model.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.RegisterBindingModel.Email">
+            <summary>
+            Gets or sets the email.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.RegisterBindingModel.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.RegisterBindingModel.ConfirmPassword">
+            <summary>
+            Gets or sets the confirm password.
+            </summary>
+        </member>
+        <member name="T:PVWI.Models.RegisterExternalBindingModel">
+            <summary>
+            The register external binding model.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.RegisterExternalBindingModel.Email">
+            <summary>
+            Gets or sets the email.
+            </summary>
+        </member>
+        <member name="T:PVWI.Models.RemoveLoginBindingModel">
+            <summary>
+            The remove login binding model.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.RemoveLoginBindingModel.LoginProvider">
+            <summary>
+            Gets or sets the login provider.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.RemoveLoginBindingModel.ProviderKey">
+            <summary>
+            Gets or sets the provider key.
+            </summary>
+        </member>
+        <member name="T:PVWI.Models.SetPasswordBindingModel">
+            <summary>
+            The set password binding model.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.SetPasswordBindingModel.NewPassword">
+            <summary>
+            Gets or sets the new password.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.SetPasswordBindingModel.ConfirmPassword">
+            <summary>
+            Gets or sets the confirm password.
+            </summary>
+        </member>
+        <member name="T:PVWI.Models.ExternalLoginViewModel">
+            <summary>
+            The external login view model.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.ExternalLoginViewModel.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.ExternalLoginViewModel.Url">
+            <summary>
+            Gets or sets the url.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.ExternalLoginViewModel.State">
+            <summary>
+            Gets or sets the state.
+            </summary>
+        </member>
+        <member name="T:PVWI.Models.ManageInfoViewModel">
+            <summary>
+            The manage info view model.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.ManageInfoViewModel.LocalLoginProvider">
+            <summary>
+            Gets or sets the local login provider.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.ManageInfoViewModel.Email">
+            <summary>
+            Gets or sets the email.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.ManageInfoViewModel.Logins">
+            <summary>
+            Gets or sets the logins.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.ManageInfoViewModel.ExternalLoginProviders">
+            <summary>
+            Gets or sets the external login providers.
+            </summary>
+        </member>
+        <member name="T:PVWI.Models.UserInfoViewModel">
+            <summary>
+            The user info view model.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.UserInfoViewModel.Email">
+            <summary>
+            Gets or sets the email.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.UserInfoViewModel.HasRegistered">
+            <summary>
+            Gets or sets a value indicating whether has registered.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.UserInfoViewModel.LoginProvider">
+            <summary>
+            Gets or sets the login provider.
+            </summary>
+        </member>
+        <member name="T:PVWI.Models.UserLoginInfoViewModel">
+            <summary>
+            The user login info view model.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.UserLoginInfoViewModel.LoginProvider">
+            <summary>
+            Gets or sets the login provider.
+            </summary>
+        </member>
+        <member name="P:PVWI.Models.UserLoginInfoViewModel.ProviderKey">
+            <summary>
+            Gets or sets the provider key.
+            </summary>
+        </member>
+        <member name="T:PVWI.Models.ApplicationUser">
+            <summary>
+            The application user.
+            </summary>
+        </member>
+        <member name="M:PVWI.Models.ApplicationUser.GenerateUserIdentityAsync(Microsoft.AspNet.Identity.UserManager{PVWI.Models.ApplicationUser},System.String)">
+            <summary>
+            The generate user identity async.
+            </summary>
+            <param name="manager">
+            The manager.
+            </param>
+            <param name="authenticationType">
+            The authentication type.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="T:PVWI.Models.ApplicationDbContext">
+            <summary>
+            The application db context.
+            </summary>
+        </member>
+        <member name="M:PVWI.Models.ApplicationDbContext.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Models.ApplicationDbContext"/> class.
+            </summary>
+        </member>
+        <member name="M:PVWI.Models.ApplicationDbContext.Create">
+            <summary>
+            The create.
+            </summary>
+            <returns>
+            The <see cref="T:PVWI.Models.ApplicationDbContext"/>.
+            </returns>
+        </member>
+        <member name="T:PVWI.Providers.ApplicationOAuthProvider">
+            <summary>
+            The application o auth provider.
+            </summary>
+        </member>
+        <member name="F:PVWI.Providers.ApplicationOAuthProvider._publicClientId">
+            <summary>
+            The _public client id.
+            </summary>
+        </member>
+        <member name="M:PVWI.Providers.ApplicationOAuthProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Providers.ApplicationOAuthProvider"/> class.
+            </summary>
+            <param name="publicClientId">
+            The public client id.
+            </param>
+            <exception cref="T:System.ArgumentNullException">
+            </exception>
+        </member>
+        <member name="M:PVWI.Providers.ApplicationOAuthProvider.GrantResourceOwnerCredentials(Microsoft.Owin.Security.OAuth.OAuthGrantResourceOwnerCredentialsContext)">
+            <summary>
+            The grant resource owner credentials.
+            </summary>
+            <param name="context">
+            The context.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Providers.ApplicationOAuthProvider.TokenEndpoint(Microsoft.Owin.Security.OAuth.OAuthTokenEndpointContext)">
+            <summary>
+            The token endpoint.
+            </summary>
+            <param name="context">
+            The context.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Providers.ApplicationOAuthProvider.ValidateClientAuthentication(Microsoft.Owin.Security.OAuth.OAuthValidateClientAuthenticationContext)">
+            <summary>
+            The validate client authentication.
+            </summary>
+            <param name="context">
+            The context.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Providers.ApplicationOAuthProvider.ValidateClientRedirectUri(Microsoft.Owin.Security.OAuth.OAuthValidateClientRedirectUriContext)">
+            <summary>
+            The validate client redirect uri.
+            </summary>
+            <param name="context">
+            The context.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="M:PVWI.Providers.ApplicationOAuthProvider.CreateProperties(System.String)">
+            <summary>
+            The create properties.
+            </summary>
+            <param name="userName">
+            The user name.
+            </param>
+            <returns>
+            The <see cref="T:Microsoft.Owin.Security.AuthenticationProperties"/>.
+            </returns>
+        </member>
+        <member name="T:PVWI.Results.ChallengeResult">
+            <summary>
+            The challenge result.
+            </summary>
+        </member>
+        <member name="M:PVWI.Results.ChallengeResult.#ctor(System.String,System.Web.Http.ApiController)">
+            <summary>
+            Initializes a new instance of the <see cref="T:PVWI.Results.ChallengeResult"/> class.
+            </summary>
+            <param name="loginProvider">
+            The login provider.
+            </param>
+            <param name="controller">
+            The controller.
+            </param>
+        </member>
+        <member name="M:PVWI.Results.ChallengeResult.ExecuteAsync(System.Threading.CancellationToken)">
+            <summary>
+            The execute async.
+            </summary>
+            <param name="cancellationToken">
+            The cancellation token.
+            </param>
+            <returns>
+            The <see cref="T:System.Threading.Tasks.Task"/>.
+            </returns>
+        </member>
+        <member name="P:PVWI.Results.ChallengeResult.LoginProvider">
+            <summary>
+            Gets or sets the login provider.
+            </summary>
+        </member>
+        <member name="P:PVWI.Results.ChallengeResult.Request">
+            <summary>
+            Gets or sets the request.
+            </summary>
+        </member>
+    </members>
+</doc>
